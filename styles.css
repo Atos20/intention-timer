@@ -1,0 +1,33 @@
+/* Colors
+Main background: #2B2733
+Text on main background: #CBC9CF
+Header, cards: #46424D
+Card shadow: #26222D
+Text on header and cards: #FFF
+Study: #B3FD78
+Meditate: #C278FD
+Exercise: #FD8078
+Error: #EFB7EC */
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #2B2733;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+}
+
+header {
+  background-color: #46424D;
+}
+
+h1 {
+  color: #FFF;
+  text-align: center;
+}
