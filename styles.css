@@ -128,7 +128,7 @@ p {
 
 main {
   display: grid;
-  grid-template-columns: 67% 33%;
+  grid-template-columns: 65% 35%;
   grid-row: 100%
 }
 
@@ -143,6 +143,9 @@ aside {
 .past-activity-card {
   background-color: #46424D;
   display: grid;
+  margin: 1em;
+  padding: 1em;
+  border-radius: .5em;
   grid-template: 90% 10%;
   grid-row: 1fr 1fr 1fr;
 }
@@ -154,10 +157,11 @@ aside {
   grid-area: 1 / 2 / 3 / 3;
   display: flex;
   justify-content: flex-end;
+  border-radius: .1em;
 }
 
 .past-activity {
-  font-weight: 900;
+  font-weight: 400;
 }
 
 .past-time {
@@ -165,5 +169,5 @@ aside {
 }
 
 .past-intention {
-  font-weight: 100;
+  font-weight: 300;
 }
