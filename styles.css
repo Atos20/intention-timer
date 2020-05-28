@@ -42,6 +42,10 @@ section {
   padding: 2em 8em 1em 8em;
   margin: 1em;
   border-radius: .5em;
+<<<<<<< Updated upstream
+=======
+  /* width: 65% */
+>>>>>>> Stashed changes
 }
 
 .card-text {
@@ -164,10 +168,80 @@ aside {
   font-weight: 400;
 }
 
+<<<<<<< Updated upstream
 .past-time {
 
 }
 
 .past-intention {
   font-weight: 300;
+=======
+    /*set height, probably not set width*/
+
+
+
+
+p {
+  color: #CBC9CF;
+  font-size: .8em;
+}
+
+.hide {
+  display: none;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  grid-row: 100%;
+}
+
+.display {
+  grid-area: 1/ 1 / 1 / 2;
+}
+
+aside {
+  grid-column: 1 /2 / 1/ 3;
+}
+
+.no-activities-message {
+  font-size: .8em;
+  text-align: center;
+  line-height: 2em;
+  margin: 0 50px 0 50px;
+}
+
+.past-activity-card {
+  background-color: #46424D;
+  display: grid;
+  margin: 1em;
+  padding: 1em;
+  border-radius: .5em;
+  grid-template: 90% 10%;
+  grid-row: 1fr 1fr 1fr;
+  border-radius: .5em;
+}
+
+.activity-color-tag {
+  width: .2em;
+  height: 2em;
+  background-color: #C278FD;
+  grid-area: 1 / 2 / 3 / 3;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: .1em;
+}
+
+.past-activity {
+  font-weight: bold;
+  margin: 0;
+}
+
+.past-time {
+  margin: 0;
+}
+
+.past-intention {
+  margin: 5px 0 5px 0;
+>>>>>>> Stashed changes
 }
