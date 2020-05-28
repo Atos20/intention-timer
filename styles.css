@@ -172,7 +172,7 @@ aside {
   background-color: #C278FD;
   grid-area: 1 / 2 / 3 / 3;
   display: flex;
-  justify-content: flex-end;
+  justify-self: end;
   border-radius: .1em;
 }
 
