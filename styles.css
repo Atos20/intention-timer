@@ -115,3 +115,55 @@ form {
   border-bottom: 2px solid #CBC9CF;
   margin-bottom: .4em;
 }
+
+
+/* MY ADDITIONS */
+p {
+  color: #CBC9CF;
+}
+
+.hide {
+  display: none;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 67% 33%;
+  grid-row: 100%
+}
+
+.display {
+  grid-area: 1/ 1 / 1 / 2;
+}
+
+aside {
+  grid-column: 1 /2 / 1/ 3;
+}
+
+.past-activity-card {
+  background-color: #46424D;
+  display: grid;
+  grid-template: 90% 10%;
+  grid-row: 1fr 1fr 1fr;
+}
+
+.activity-color-tag {
+  width: .2em;
+  height: 2em;
+  background-color: #C278FD;
+  grid-area: 1 / 2 / 3 / 3;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.past-activity {
+  font-weight: 900;
+}
+
+.past-time {
+
+}
+
+.past-intention {
+  font-weight: 100;
+}

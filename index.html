@@ -12,7 +12,7 @@
     <h1>INTENTION TIMER</h1>
   </header>
   <main>
-    <article>
+    <article class="display">
       <h2>New Activity</h2>
       <section>
         <p class="card-text">Select a category</p>
@@ -32,7 +32,7 @@
         </form>
       </section>
     </article>
-    <article>
+    <article class="hide">
       <section>
         <h2>Current Activity</h2>
         <h3>Deep Breathing</h3>
@@ -41,7 +41,7 @@
         <button>LOG ACTIVITY</button>
       </section>
     </article>
-    <article>
+    <article class="hide">
       <h2>Completed Activity</h2>
       <section>
         <button>CREATE A NEW ACTIVITY</button>
@@ -50,10 +50,11 @@
   <aside>
     <h2>Past Activities</h2>
     <p>You haven't logged any activities yet.  Complete the form to the left to get started!</p>
-    <article>
-      <p>Mediate</p>
-      <p>5 MIN 0 SECONDS</p>
-      <p>Deep Breathing</p>
+    <article class="past-activity-card">
+      <p class="past-activity">Mediate</p>
+      <p class="past-time">5 MIN 0 SECONDS</p>
+      <p class="past-intention">Deep Breathing</p>
+      <div class="activity-color-tag"></div>
     </article>
   </aside>
   </main>
