@@ -13,6 +13,7 @@ Error: #EFB7EC */
 * {
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  max-width: 100%;
 }
 
 body {
@@ -75,11 +76,9 @@ div {
 }
 
 form {
-    /* display: flex;
-    flex-direction: column; */
     margin: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 1em;
     color: #CBC9CF;
