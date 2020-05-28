@@ -14,7 +14,7 @@
   <main>
     <article>
       <h2>New Activity</h2>
-      <section>
+      <section ="activity-card">
         <p class="card-text">Select a category</p>
         <div>
           <button class="activity-button"><img class="icon study-icon" src="assets/study.svg" alt="Lightbulb Off"/>Study</button>
@@ -33,18 +33,25 @@
       </section>
     </article>
     <article>
-      <section>
-        <h2>Current Activity</h2>
+      <h2>Current Activity</h2>
+      <section class="timer-card">
         <h3>Deep Breathing</h3>
-        <p>I am the timer</p>
-        <button>START</button>
-        <button>LOG ACTIVITY</button>
+        <p class="timer-text"><span class="minute-text">05</span>:<span class="seconds-text">00</span></p>
+        <button class="timer-button">START</button>
+        <button class="log-activity-button">LOG ACTIVITY</button>
       </section>
+      <!-- <section class="timer-card">
+      <div>
+        <p class="card2-text">Deep Breathing</p>
+        <p class="timer"><span class="minutes">05</span>:<span class="seconds">00</span></p>
+        <button class="timer-button">START</button>
+        <p><button class="log-act-button">LOG ACTIVITY</button></p>
+      </div> -->
     </article>
     <article>
       <h2>Completed Activity</h2>
       <section>
-        <button>CREATE A NEW ACTIVITY</button>
+        <button class="new-activity-button">CREATE A NEW ACTIVITY</button>
       </section>
     </article>
   <aside>
