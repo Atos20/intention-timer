@@ -32,6 +32,10 @@ header {
 h1 {
   color: #FFF;
   text-align: center;
+  margin: 0;
+  padding: .8em;
+  font-size: 1.2em;
+  letter-spacing: 1px;
 }
 
 h2 {
@@ -78,7 +82,7 @@ div {
 form {
     margin: 10px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 1em;
     color: #CBC9CF;
