@@ -76,7 +76,7 @@ section {
   height: 80px;
   background-color: transparent;
   border: 1px solid #FFF;
-  /* color: #FFF; */
+  color: #FFF;
   font-size: 16px;
   display: flex;
   flex-direction: column;
@@ -314,8 +314,8 @@ aside {
     height: 40px;
     margin: .5em;
     background-color: transparent;
-    color: #FFF;
     border: solid 1px #FFF;
+    color: #FFF;
     font-size: 16px;
     display: flex;
     flex-direction: row;
@@ -323,6 +323,10 @@ aside {
     justify-self: center;
     /* justify-content: center; */
   }
+
+  /* .study-icon-active {
+    display: none;
+  } */
 
   div {
     display: flex;
