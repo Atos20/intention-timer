@@ -21,6 +21,15 @@ body {
   min-width: 230px;
 }
 
+button {
+  outline: none;
+  box-shadow: none;
+}
+
+.study-button {
+  color: white;
+}
+
 .icon {
   width: 30px;
   height: 30px;
@@ -66,6 +75,7 @@ section {
   width: 150px;
   height: 80px;
   background-color: transparent;
+  border: 1px solid #FFF;
   color: #FFF;
   font-size: 16px;
   display: flex;
@@ -75,8 +85,24 @@ section {
   border-radius: .2em;
 }
 
-.white {
+/* .white {
   border: solid 1px #FFF;
+} */
+
+/* .white {
+  border: 2px solid #FFFFFF;
+} */
+
+.green {
+  border: 2px solid #B3FD78;
+}
+
+.purple {
+  border: 2px solid #C278FD;
+}
+
+.red {
+  border: 2px solid #FD8078;
 }
 
 div {
