@@ -55,6 +55,7 @@ section {
   margin-bottom: 1.5em;
   border-radius: .5em;
   height: 500px;
+  box-shadow: 20px 20px 50px 10px #26222D;
 }
 
 .card-text {
@@ -172,9 +173,7 @@ aside {
   margin: 1em;
   padding: 1em;
   border-radius: .5em;
-  grid-template: 90% 10%;
-  grid-row: 1fr 1fr 1fr;
-  border-radius: .5em;
+  grid-template-columns: 98% 2%;
 }
 
 .activity-color-tag {
