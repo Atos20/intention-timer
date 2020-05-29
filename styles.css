@@ -54,6 +54,7 @@ section {
   margin: 1em;
   margin-bottom: 1.5em;
   border-radius: .5em;
+  height: 500px;
 }
 
 .card-text {
@@ -247,13 +248,18 @@ aside {
 
 .new-activity-button {
   cursor: pointer;
-  float: none;
-  margin: 40px auto 0px auto;
+  margin: 20px auto 0px auto;
   grid-area: 5 / 2 / 6 / 3;
-  width: 15em;
   height: 2.4em;
-  /* justify-content: flex-end; */
-  align-self: start;
+  display: flex;
+  align-content: center;
+  text-align: center;
+  align-content: center;
+  width: 400px;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  border-radius: .5em;
 }
 
 @media only screen and (max-width: 550px) {
