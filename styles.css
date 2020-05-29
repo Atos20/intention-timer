@@ -18,6 +18,7 @@ Error: #EFB7EC */
 
 body {
   background-color: #2B2733;
+  min-width: 230px;
 }
 
 .icon {
