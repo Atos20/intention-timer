@@ -26,9 +26,9 @@ button {
   box-shadow: none;
 }
 
-.study-button {
+/* .study-button {
   color: white;
-}
+} */
 
 .icon {
   width: 30px;
@@ -76,7 +76,7 @@ section {
   height: 80px;
   background-color: transparent;
   border: 1px solid #FFF;
-  color: #FFF;
+  /* color: #FFF; */
   font-size: 16px;
   display: flex;
   flex-direction: column;
@@ -94,14 +94,17 @@ section {
 } */
 
 .green {
+  color: #B3FD78;
   border: 2px solid #B3FD78;
 }
 
 .purple {
+  color: #C278FD;
   border: 2px solid #C278FD;
 }
 
 .red {
+  color: #FD8078;
   border: 2px solid #FD8078;
 }
 
