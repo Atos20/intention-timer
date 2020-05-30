@@ -21,11 +21,12 @@ startActivityButton.addEventListener('click', storeInformation);
 
 var activityInformation = [];
 
-function storeInformation() {
+function storeInformation(event) {
   event.preventDefault();
-  activityInformation.push(intentionInformation.value);
-  activityInformation.push(minutesNumberOnly.value);
-  activityInformation.push(secondsNumberOnly.value);
+  var activityInstance = new Activity (undefined, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
+
+  activityInformation.push(activityInstance)
+
   displayTimerCard();
 }
 
