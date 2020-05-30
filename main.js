@@ -13,6 +13,8 @@ var secondsNumberOnly = document.querySelector('.seconds-input');
 var startActivityButton = document.querySelector('.start-activity-button')
 var timerCard = document.querySelector('.timer-card-article');
 var activityCard = document.querySelector('.activity-card-article');
+var userTimerCard = document.querySelector('.timer-card');
+var userIntention = document.querySelector('.user-intention')
 
 studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
@@ -25,14 +27,25 @@ function storeInformation(event) {
   event.preventDefault();
   var activityInstance = new Activity (undefined, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
 
-  activityInformation.push(activityInstance)
+  activityInformation.unshift(activityInstance)
 
   displayTimerCard();
 }
 
+
+function displayUserInput() {
+  userTimerCard.innerHTML = '';
+  userTimerCard.innerHTML += `<h3 class="user-      intention">${activityInformation[0].description}</h3>
+    <p class="timer-text"><span class="minute-text">${activityInformation[0].minutes}</span>:<span class="seconds-text">${activityInformation[0].seconds}</span></p>
+    <button class="timer-button">START</button>
+    <button class="log-activity-button">LOG ACTIVITY</button>
+    `
+}
+
 function displayTimerCard() {
-timerCard.classList.remove('hide');
-activityCard.classList.add('hide');
+  timerCard.classList.remove('hide');
+  activityCard.classList.add('hide');
+  displayUserInput();
 }
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
