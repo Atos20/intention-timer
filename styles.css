@@ -85,6 +85,11 @@ section {
   border-radius: .2em;
 }
 
+input {
+  outline: none;
+  box-shadow: none;
+}
+
 /* .white {
   border: solid 1px #FFF;
 } */
