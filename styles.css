@@ -255,13 +255,16 @@ aside {
 .timer-button {
   background-color: #46424D;
   border-radius: 50%;
-  border: 1px solid #FFF;
-  color: #FFF;
   cursor: pointer;
   float: none;
   height: 200px;
   width: 200px;
   font-size: 25px;
+}
+
+.green-circle {
+border: 1px solid #FFF;
+color: #B3FD78;
 }
 
 .timer-text {
