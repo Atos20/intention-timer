@@ -13,6 +13,10 @@ var secondsNumberOnly = document.querySelector('.seconds-input');
 var startActivityButton = document.querySelector('.start-activity-button')
 var timerCard = document.querySelector('.timer-card-article');
 var activityCard = document.querySelector('.activity-card-article');
+var userTimerCard = document.querySelector('.timer-card');
+var userIntention = document.querySelector('.user-intention');
+var timerButton = document.querySelector('.timer-button');
+var userInput = document.querySelector('.user-input')
 
 studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
@@ -20,19 +24,51 @@ exerciseButton.addEventListener('click', changeColorOfExerciseButton);
 startActivityButton.addEventListener('click', storeInformation);
 
 var activityInformation = [];
+var selectedCategory
 
 function storeInformation(event) {
   event.preventDefault();
-  var activityInstance = new Activity (undefined, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
 
-  activityInformation.push(activityInstance)
+  determineCategory();
+  var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
+
+  activityInformation.unshift(activityInstance)
 
   displayTimerCard();
 }
 
+function determineCategory() {
+  if(studyButton.classList.contains('green') === true) {
+    selectedCategory = 'study';
+  }
+}
+
+// function assignCorrectCircleColor() {
+// }
+
+// function displayUserInput() {
+//   userTimerCard.innerHTML = '';
+//   userTimerCard.innerHTML += `<h3 class="user-intention">${activityInformation[0].description}</h3>
+//     <p class="timer-text"><span class="minute-text">${activityInformation[0].minutes}</span>:<span class="seconds-text">${activityInformation[0].seconds}</span></p>
+//     <button class="timer-button">START</button>
+//     <button class="log-activity-button">LOG ACTIVITY</button>
+//     `
+//     if(activityInformation[0].category === 'study') {
+//       timerButton.classList.add('.green-circle');
+//     }
+// }
+
+function displayUserInput() {
+  userInput.innerHTML = '';
+  userInput.innerHTML += `<h3 class="user-intention">${activityInformation[0].description}</h3>
+  <p class="timer-text"><span class="minute-text">${activityInformation[0].minutes}</span>:<span class="seconds-text">${activityInformation[0].seconds}</span></p>`
+}
+
 function displayTimerCard() {
-timerCard.classList.remove('hide');
-activityCard.classList.add('hide');
+  timerCard.classList.remove('hide');
+  activityCard.classList.add('hide');
+  displayUserInput();
+  // assignCorrectCircleColor();
 }
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
