@@ -12,7 +12,7 @@
     <h1>INTENTION TIMER</h1>
   </header>
   <main>
-    <article class="display">
+    <article class="display activity-card-article" >
       <h2>New Activity</h2>
       <section ="activity-card">
         <p class="card-text">Select a category</p>
@@ -25,14 +25,14 @@
           <label class="intention-question">What would you like to accomplish during this time?</label>
           <input type="text" class="intention-answer input">
           <label class="minutes">Minutes</label>
-          <input class="minutes-input input" type="text">
+          <input maxlength="2" class="minutes-input input" type="text">
           <label class="seconds">Seconds</label>
-          <input class="seconds-input input" type="text" >
+          <input maxlength="2" class="seconds-input input" type="text" >
           <button class="start-activity-button">START ACTIVITY</button>
         </form>
       </section>
     </article>
-    <article class="hide">
+    <article class="hide timer-card-article">
       <h2>Current Activity</h2>
       <section class="timer-card">
         <h3>Deep Breathing</h3>
