@@ -7,21 +7,32 @@ var meditateIcon = document.querySelector('.meditate-icon');
 var meditateIconActive = document.querySelector('.meditate-icon-active');
 var exerciseIcon = document.querySelector('.exercise-icon');
 var exerciseIconActive = document.querySelector('.exercise-icon-active');
+var intentionInformation = document.querySelector('.intention-answer')
 var minutesNumberOnly = document.querySelector('.minutes-input');
 var secondsNumberOnly = document.querySelector('.seconds-input');
 var startActivityButton = document.querySelector('.start-activity-button')
+var timerCard = document.querySelector('.timer-card');
 
 studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
 exerciseButton.addEventListener('click', changeColorOfExerciseButton);
-// minuteNumberOnly.addEventListener('keypress', onlyNumbers);
+startActivityButton.addEventListener('click', storeInformation);
 
-// function onlyNumbers(event) {
-//   var key = event.which;
-//   if((key < 48 || key > 57)) {
-//       event.preventDefault();
-//     }
-// }
+var activityInformation = [];
+
+function storeInformation() {
+  event.preventDefault();
+  activityInformation.push(intentionInformation.value);
+  activityInformation.push(minutesNumberOnly.value);
+  activityInformation.push(secondsNumberOnly.value);
+  displayTimer();
+  //call the function here YSAY!
+}
+
+function displayTimer() {
+timerCard.ClassList.add('hide');
+} //hides the current card and display the timer
+
 minutesNumberOnly.addEventListener('keypress', function(event) {
   // minuteNumberOnly.value
   var key1 = event.which;
