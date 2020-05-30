@@ -18,6 +18,12 @@ function changeColorOfStudyButton() {
   studyButton.classList.toggle('white');
   studyIcon.classList.toggle('hide')
   studyIconActive.classList.toggle('hide')
+  meditateButton.classList.remove('purple');
+  meditateIcon.classList.remove('hide');
+  meditateIconActive.classList.add('hide');
+  exerciseIconActive.classList.add('hide');
+  exerciseIcon.classList.remove('hide');
+  exerciseButton.classList.remove('red');
 }
 
 function changeColorOfMeditateButton() {
@@ -25,6 +31,12 @@ function changeColorOfMeditateButton() {
   meditateButton.classList.toggle('white');
   meditateIcon.classList.toggle('hide');
   meditateIconActive.classList.toggle('hide');
+  studyIconActive.classList.add('hide');
+  studyIcon.classList.remove('hide');
+  studyButton.classList.remove('green');
+  exerciseIconActive.classList.add('hide');
+  exerciseIcon.classList.remove('hide');
+  exerciseButton.classList.remove('red');
 }
 
 function changeColorOfExerciseButton() {
@@ -32,4 +44,10 @@ function changeColorOfExerciseButton() {
   exerciseButton.classList.toggle('white');
   exerciseIcon.classList.toggle('hide');
   exerciseIconActive.classList.toggle('hide');
+  meditateButton.classList.remove('purple');
+  meditateIcon.classList.remove('hide');
+  meditateIconActive.classList.add('hide');
+  studyIconActive.classList.add('hide');
+  studyIcon.classList.remove('hide');
+  studyButton.classList.remove('green');
 }
