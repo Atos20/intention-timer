@@ -11,7 +11,8 @@ var intentionInformation = document.querySelector('.intention-answer')
 var minutesNumberOnly = document.querySelector('.minutes-input');
 var secondsNumberOnly = document.querySelector('.seconds-input');
 var startActivityButton = document.querySelector('.start-activity-button')
-var timerCard = document.querySelector('.timer-card');
+var timerCard = document.querySelector('.timer-card-article');
+var activityCard = document.querySelector('.activity-card-article');
 
 studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
@@ -25,13 +26,13 @@ function storeInformation() {
   activityInformation.push(intentionInformation.value);
   activityInformation.push(minutesNumberOnly.value);
   activityInformation.push(secondsNumberOnly.value);
-  displayTimer();
-  //call the function here YSAY!
+  displayTimerCard();
 }
 
-function displayTimer() {
-timerCard.ClassList.add('hide');
-} //hides the current card and display the timer
+function displayTimerCard() {
+timerCard.classList.remove('hide');
+activityCard.classList.add('hide');
+}
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
   // minuteNumberOnly.value
