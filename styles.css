@@ -188,7 +188,7 @@ main {
   grid-row: 100%;
 }
 
-.display {
+.activity-card-article {
   grid-area: 1/ 1 / 1 / 2;
 }
 
