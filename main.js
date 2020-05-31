@@ -17,6 +17,10 @@ var userTimerCard = document.querySelector('.timer-card');
 var userIntention = document.querySelector('.user-intention');
 var timerButton = document.querySelector('.timer-button');
 var userInput = document.querySelector('.user-input')
+var alertEmptyText = document.querySelector('.alert-empty-text');
+var alertEmptyMinutes = document.querySelector('.alert-empty-minutes')
+var alertEmptySeconds = document.querySelector('.alert-empty-seconds')
+
 
 studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
@@ -26,22 +30,41 @@ startActivityButton.addEventListener('click', storeInformation);
 var activityInformation = [];
 var selectedCategory
 
-function storeInformation(event) {
-  event.preventDefault();
-
-  determineCategory();
-  var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
-
-  activityInformation.unshift(activityInstance)
-
-  displayTimerCard();
-}
-
-function determineCategory() {
-  if(studyButton.classList.contains('green') === true) {
-    selectedCategory = 'study';
+function alertEmptyInputField() {
+  if (intentionInformation.value === '' || minuteNumberOnly.value === '' || secondsNumberOnly.value === '') {
+    alertEmptySeconds.classList.remove('hide');
+    alertEmptyMinutes.classList.remove('hide');
+    alertEmptyText.classList.remove('hide');
+  } else if (intentionInformation.value === '') {
+    alertEmptyText.classList.remove('hide');
+    alertEmptySeconds.classList.add('hide');
+    alertEmptyMinutes.classList.add('hide');
+  } else if (minutesNumberOnly.value === '') {
+    alertEmptyMinutes.classList.remove('hide');
+    alertEmptyText.classList.add('hide');
+    alertEmptySeconds.classList.add('hide');
+  } else if (secondsNumberOnly.value === '') {
+    alertEmptySeconds.classList.remove('hide');
+    alertEmptyMinutes.classList.add('hide');
+    alertEmptyText.classList.add('hide');
+  } else {
+    displayTimerCard();
   }
 }
+
+
+//   }
+// }
+
+function storeInformation(event) {
+  event.preventDefault();
+  var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
+  activityInformation.unshift(activityInstance)
+  alertEmptyInputField();
+  // displayTimerCard();
+}
+
+
 
 // function assignCorrectCircleColor() {
 // }
@@ -73,19 +96,29 @@ function displayTimerCard() {
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
   // minuteNumberOnly.value
-  var key1 = event.which;
+  console.log(event);
+  var key1 = event.keyCode;
   if((key1 < 48 || key1 > 57)) {
     event.preventDefault();
   }
 })
 
 secondsNumberOnly.addEventListener('keypress', function(event) {
-  var key2 = event.which;
+  var key2 = event.keyCode;
   if((key2 < 48 || key2 > 57)) {
     event.preventDefault();
   }
 })
 
+
+// var intentionInformation = document.querySelector('.intention-answer')
+// var minutesNumberOnly = document.querySelector('.minutes-input');
+// var secondsNumberOnly = document.querySelector('.seconds-input');
+
+//check the input field to see if it is empty or null
+//undefined for number
+//empty string for text
+//if true for undefined or empty string alert
 
 function changeColorOfStudyButton() {
   studyButton.classList.toggle('green');
@@ -98,6 +131,7 @@ function changeColorOfStudyButton() {
   exerciseIconActive.classList.add('hide');
   exerciseIcon.classList.remove('hide');
   exerciseButton.classList.remove('red');
+  timerButton.classList.add('green-circle');
 }
 
 function changeColorOfMeditateButton() {
@@ -111,6 +145,7 @@ function changeColorOfMeditateButton() {
   exerciseIconActive.classList.add('hide');
   exerciseIcon.classList.remove('hide');
   exerciseButton.classList.remove('red');
+  timerButton.classList.add('purple-circle');
 }
 
 function changeColorOfExerciseButton() {
@@ -124,4 +159,5 @@ function changeColorOfExerciseButton() {
   studyIconActive.classList.add('hide');
   studyIcon.classList.remove('hide');
   studyButton.classList.remove('green');
+  timerButton.classList.add('red-circle');
 }
