@@ -21,7 +21,7 @@ var alertEmptyText = document.querySelector('.alert-empty-text');
 var alertEmptyMinutes = document.querySelector('.alert-empty-minutes');
 var alertEmptySeconds = document.querySelector('.alert-empty-seconds');
 var alertUnselectedActivity = document.querySelector('.alert-unselected-activity');
-var minuteText = document.querySelector('.minute-text');
+var minutesText = document.querySelector('.minutes-text');
 var secondsText = document.querySelector('.seconds-text');
 
 
@@ -89,9 +89,9 @@ function storeInformation(event) {
 }
 
 function displayUserInput() {
-  userInput.innerHTML = '';
-  userInput.innerHTML += `<h3 class="user-intention">${activityInformation[0].description}</h3>
-  <p class="timer-text"><span class="minute-text">${activityInformation[0].minutes}</span>:<span class="seconds-text">${activityInformation[0].seconds}</span></p>`
+  userIntention.innerText = activityInformation[0].description;
+  minutesText.innerText = activityInformation[0].minutes;
+  secondsText.innerText = activityInformation[0].seconds;
 }
 
 function displayTimerCard() {
@@ -111,32 +111,13 @@ function timerStart() {
   var allSeconds = totalSeconds();
   function countdown() {
     allSeconds--
-    // console.log(allSeconds)
-    userInput.innerHTML = '';
-    userInput.innerHTML += `<h3 class="user-intention">${activityInformation[0].description}</h3>
-    <p class="timer-text"><span class="minute-text">${Math.floor( (allSeconds/60) % 60 )}</span>:<span class="seconds-text">${Math.floor( (allSeconds) % 60 )}</span></p>`
+    minutesText.innerText = Math.floor( (allSeconds/60) % 60 )
+    secondsText.innerText = Math.floor( (allSeconds) % 60 );
+    if (secondsText.innerText < 10) {
+      secondsText.innerText = ('0' + secondsText.innerText);
+    }
   }
-    console.log(secondsText.innerText < 10)
-    if (secondsText <= 0) {
-      return
-    }
-
-
-    // if (document.querySelector('.seconds-text').innerText < 10) {
-    //   // secondsText.innerText = (`'0' + ${secondsText}.innerText`);
-    //   userInput.innerHTML = '';
-    //   userInput.innerHTML += `<h3 class="user-intention">${activityInformation[0].description}</h3>
-    //   <p class="timer-text"><span class="minute-text">${Math.floor( (allSeconds/60) % 60 )}</span>:<span class="seconds-text">${Unicorn}</span></p>`
-    }
-
-
-
-
-
-
-
-
-
+}
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
   // minuteNumberOnly.value
