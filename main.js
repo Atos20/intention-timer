@@ -20,7 +20,7 @@ var userInput = document.querySelector('.user-input')
 var alertEmptyText = document.querySelector('.alert-empty-text');
 var alertEmptyMinutes = document.querySelector('.alert-empty-minutes')
 var alertEmptySeconds = document.querySelector('.alert-empty-seconds')
-
+var alertUnselectedActivity = document.querySelector('.alert-unselected-activity')
 
 studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
@@ -29,9 +29,18 @@ startActivityButton.addEventListener('click', storeInformation);
 startActivityButton.addEventListener('click', addIntentionAlert);
 startActivityButton.addEventListener('click', addMinuteAlert);
 startActivityButton.addEventListener('click', addSecondAlert);
+startActivityButton.addEventListener('click', iconAlert);
 
 var activityInformation = [];
 var selectedCategory
+
+function iconAlert () {
+  if(studyButton.classList.contains('green') === false && meditateButton.classList.contains('purple') === false && exerciseButton.classList.contains('red') === false) {
+    alertUnselectedActivity.classList.remove('hide');
+   }
+   // if(studyButton.classList.contains('green') !== false && meditateButton.classList.contains('purple') !== false && exerciseButton.classList.contains('red') !== false) {
+   //   alertUnselectedActivity.classList.add('hide');
+}
 
 function addIntentionAlert() {
   if (intentionInformation.value.length === 0) {
@@ -57,6 +66,7 @@ function addSecondAlert() {
     alertEmptySeconds.classList.add('hide');
   }
 }
+
 
 function storeInformation(event) {
   event.preventDefault();
@@ -93,16 +103,6 @@ secondsNumberOnly.addEventListener('keypress', function(event) {
     event.preventDefault();
   }
 })
-
-
-// var intentionInformation = document.querySelector('.intention-answer')
-// var minutesNumberOnly = document.querySelector('.minutes-input');
-// var secondsNumberOnly = document.querySelector('.seconds-input');
-
-//check the input field to see if it is empty or null
-//undefined for number
-//empty string for text
-//if true for undefined or empty string alert
 
 function changeColorOfStudyButton() {
   studyButton.classList.toggle('green');
