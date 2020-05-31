@@ -29,7 +29,7 @@ var selectedCategory
 function storeInformation(event) {
   event.preventDefault();
 
-  determineCategory();
+
   var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
 
   activityInformation.unshift(activityInstance)
@@ -37,11 +37,7 @@ function storeInformation(event) {
   displayTimerCard();
 }
 
-function determineCategory() {
-  if(studyButton.classList.contains('green') === true) {
-    selectedCategory = 'study';
-  }
-}
+
 
 // function assignCorrectCircleColor() {
 // }
@@ -73,14 +69,15 @@ function displayTimerCard() {
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
   // minuteNumberOnly.value
-  var key1 = event.which;
+  console.log(event);
+  var key1 = event.keyCode;
   if((key1 < 48 || key1 > 57)) {
     event.preventDefault();
   }
 })
 
 secondsNumberOnly.addEventListener('keypress', function(event) {
-  var key2 = event.which;
+  var key2 = event.keyCode;
   if((key2 < 48 || key2 > 57)) {
     event.preventDefault();
   }
@@ -98,6 +95,7 @@ function changeColorOfStudyButton() {
   exerciseIconActive.classList.add('hide');
   exerciseIcon.classList.remove('hide');
   exerciseButton.classList.remove('red');
+  timerButton.classList.add('green-circle');
 }
 
 function changeColorOfMeditateButton() {
@@ -111,6 +109,7 @@ function changeColorOfMeditateButton() {
   exerciseIconActive.classList.add('hide');
   exerciseIcon.classList.remove('hide');
   exerciseButton.classList.remove('red');
+  timerButton.classList.add('purple-circle');
 }
 
 function changeColorOfExerciseButton() {
@@ -124,4 +123,5 @@ function changeColorOfExerciseButton() {
   studyIconActive.classList.add('hide');
   studyIcon.classList.remove('hide');
   studyButton.classList.remove('green');
+  timerButton.classList.add('red-circle');
 }
