@@ -26,35 +26,48 @@ studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
 exerciseButton.addEventListener('click', changeColorOfExerciseButton);
 startActivityButton.addEventListener('click', storeInformation);
+startActivityButton.addEventListener('click', addIntentionAlert);
+startActivityButton.addEventListener('click', addMinuteAlert);
+startActivityButton.addEventListener('click', addSecondAlert);
 
 var activityInformation = [];
 var selectedCategory
 
-function alertEmptyInputField() {
-  if (intentionInformation.value === '' || minuteNumberOnly.value === '' || secondsNumberOnly.value === '') {
-    alertEmptySeconds.classList.remove('hide');
-    alertEmptyMinutes.classList.remove('hide');
-    alertEmptyText.classList.remove('hide');
-  } else if (intentionInformation.value === '') {
-    alertEmptyText.classList.remove('hide');
-    alertEmptySeconds.classList.add('hide');
-    alertEmptyMinutes.classList.add('hide');
-  } else if (minutesNumberOnly.value === '') {
-    alertEmptyMinutes.classList.remove('hide');
-    alertEmptyText.classList.add('hide');
-    alertEmptySeconds.classList.add('hide');
-  } else if (secondsNumberOnly.value === '') {
-    alertEmptySeconds.classList.remove('hide');
-    alertEmptyMinutes.classList.add('hide');
-    alertEmptyText.classList.add('hide');
-  } else {
-    displayTimerCard();
-  }
-}
-
-
+// function alertEmptyInputField() {
+//   if (intentionInformation.value === '' && minutesNumberOnly.value === '' && secondsNumberOnly.value === '') {
+//     alertEmptySeconds.classList.remove('hide');
+//     alertEmptyMinutes.classList.remove('hide');
+//     alertEmptyText.classList.remove('hide');
+//   } else if (intentionInformation.value === '' && minutesNumberOnly.value === '') {
+//     alertEmptyText.classList.add('hide');
+//     alertEmptySeconds.classList.remove('hide');
+//     alertEmptyMinutes.classList.add('hide');
+//   } else if (minutesNumberOnly.value === '') {
+//     alertEmptyMinutes.classList.remove('hide');
+//     alertEmptyText.classList.add('hide');
+//     alertEmptySeconds.classList.add('hide');
+//   } else if (secondsNumberOnly.value === '') {
+//     alertEmptySeconds.classList.remove('hide');
+//     alertEmptyMinutes.classList.add('hide');
+//     alertEmptyText.classList.add('hide');
+//   } else {
+//     displayTimerCard();
 //   }
 // }
+
+function alertEmptyInputField() {
+  if(activityInformation[0].description === ''){
+    alertEmptyText.classList.remove('hide');
+  }
+  if(activityInformation[0].minutes === ''){
+    alertEmptyMinutes.classList.remove('hide');
+  }
+  if(activityInformation[0].seconds === ''){
+    alertEmptySeconds.classList.remove('hide');
+  }
+};
+
+
 
 function storeInformation(event) {
   event.preventDefault();
