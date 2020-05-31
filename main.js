@@ -17,6 +17,10 @@ var userTimerCard = document.querySelector('.timer-card');
 var userIntention = document.querySelector('.user-intention');
 var timerButton = document.querySelector('.timer-button');
 var userInput = document.querySelector('.user-input')
+var alertEmptyText = document.querySelector('.alert-empty-text');
+var alertEmptyMinutes = document.querySelector('.alert-empty-minutes')
+var alertEmptySeconds = document.querySelector('.alert-empty-seconds')
+
 
 studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
@@ -26,15 +30,38 @@ startActivityButton.addEventListener('click', storeInformation);
 var activityInformation = [];
 var selectedCategory
 
+function alertEmptyInputField() {
+  if (intentionInformation.value === '' || minuteNumberOnly.value === '' || secondsNumberOnly.value === '') {
+    alertEmptySeconds.classList.remove('hide');
+    alertEmptyMinutes.classList.remove('hide');
+    alertEmptyText.classList.remove('hide');
+  } else if (intentionInformation.value === '') {
+    alertEmptyText.classList.remove('hide');
+    alertEmptySeconds.classList.add('hide');
+    alertEmptyMinutes.classList.add('hide');
+  } else if (minutesNumberOnly.value === '') {
+    alertEmptyMinutes.classList.remove('hide');
+    alertEmptyText.classList.add('hide');
+    alertEmptySeconds.classList.add('hide');
+  } else if (secondsNumberOnly.value === '') {
+    alertEmptySeconds.classList.remove('hide');
+    alertEmptyMinutes.classList.add('hide');
+    alertEmptyText.classList.add('hide');
+  } else {
+    displayTimerCard();
+  }
+}
+
+
+//   }
+// }
+
 function storeInformation(event) {
   event.preventDefault();
-
-
   var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
-
   activityInformation.unshift(activityInstance)
-
-  displayTimerCard();
+  alertEmptyInputField();
+  // displayTimerCard();
 }
 
 
@@ -83,6 +110,15 @@ secondsNumberOnly.addEventListener('keypress', function(event) {
   }
 })
 
+
+// var intentionInformation = document.querySelector('.intention-answer')
+// var minutesNumberOnly = document.querySelector('.minutes-input');
+// var secondsNumberOnly = document.querySelector('.seconds-input');
+
+//check the input field to see if it is empty or null
+//undefined for number
+//empty string for text
+//if true for undefined or empty string alert
 
 function changeColorOfStudyButton() {
   studyButton.classList.toggle('green');
