@@ -16,11 +16,14 @@ var activityCard = document.querySelector('.activity-card-article');
 var userTimerCard = document.querySelector('.timer-card');
 var userIntention = document.querySelector('.user-intention');
 var timerButton = document.querySelector('.timer-button');
-var userInput = document.querySelector('.user-input')
+var userInput = document.querySelector('.user-input');
 var alertEmptyText = document.querySelector('.alert-empty-text');
-var alertEmptyMinutes = document.querySelector('.alert-empty-minutes')
-var alertEmptySeconds = document.querySelector('.alert-empty-seconds')
-var alertUnselectedActivity = document.querySelector('.alert-unselected-activity')
+var alertEmptyMinutes = document.querySelector('.alert-empty-minutes');
+var alertEmptySeconds = document.querySelector('.alert-empty-seconds');
+var alertUnselectedActivity = document.querySelector('.alert-unselected-activity');
+var minuteText = document.querySelector('.minute-text');
+var secondsText = document.querySelector('.second-text');
+
 
 studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
@@ -30,16 +33,20 @@ startActivityButton.addEventListener('click', addIntentionAlert);
 startActivityButton.addEventListener('click', addMinuteAlert);
 startActivityButton.addEventListener('click', addSecondAlert);
 startActivityButton.addEventListener('click', iconAlert);
+startActivityButton.addEventListener('click', allowDisplayTimerCard);
+timerButton.addEventListener('click', timerStart);
+timerButton.addEventListener('click', totalSeconds);
 
 var activityInformation = [];
 var selectedCategory
 
-function iconAlert () {
+function iconAlert() {
   if(studyButton.classList.contains('green') === false && meditateButton.classList.contains('purple') === false && exerciseButton.classList.contains('red') === false) {
     alertUnselectedActivity.classList.remove('hide');
    }
-   // if(studyButton.classList.contains('green') !== false && meditateButton.classList.contains('purple') !== false && exerciseButton.classList.contains('red') !== false) {
-   //   alertUnselectedActivity.classList.add('hide');
+   if(studyButton.classList.contains('green') || meditateButton.classList.contains('purple') || exerciseButton.classList.contains('red')) {
+     alertUnselectedActivity.classList.add('hide');
+   }
 }
 
 function addIntentionAlert() {
@@ -67,6 +74,11 @@ function addSecondAlert() {
   }
 }
 
+function allowDisplayTimerCard() {
+  if ((studyButton.classList.contains('green') || meditateButton.classList.contains('purple') || exerciseButton.classList.contains('red')) && (intentionInformation.value.length > 0) && (minutesNumberOnly.value.length > 0) && (secondsNumberOnly.value.length > 0)) {
+    displayTimerCard()
+  }
+}
 
 function storeInformation(event) {
   event.preventDefault();
@@ -87,6 +99,44 @@ function displayTimerCard() {
   displayUserInput();
   // assignCorrectCircleColor();
 }
+
+
+function totalSeconds() {
+  return ((parseInt(activityInformation[0].minutes) * 60) + (parseInt(activityInformation[0].seconds)))
+}
+
+function timerStart() {
+  var intentionTimer = setInterval(countdown, 1000);
+  var totalSeconds = totalSeconds();
+  function countdown() {
+    minuteText.innerText = Math.floor( (totalSeconds/60) % 60 );
+    secondsText.innerText = Math.floor( (totalSeconds--) % 60 );
+    if (secondsText.innerText < 10) {
+      secondsText.innerText = ('0' + secondsText.innerText);
+    }
+  }
+}
+
+// function addTotalSeconds() {
+//   return ((parseInt(minuteInput.value) * 60) + (parseInt(secondInput.value)));
+// }
+// function timerStart() {
+//   var myTimer = setInterval(clock, 1000);
+//   var totalSeconds = addTotalSeconds();
+//   function clock() {
+//     minutes.innerText = Math.floor( (totalSeconds/60) % 60 );
+//     seconds.innerText = Math.floor( (totalSeconds--) % 60 );
+//     if (seconds.innerText < 10) {
+//       seconds.innerText = ('0' + seconds.innerText);
+//     }
+//     if (totalSeconds < 0) {
+//       clearInterval(myTimer);
+//       timerButton.innerText = "YOU'RE AMAZING!";
+//       logActButton.classList.remove('hidden');
+//     }
+//   }
+// }
+
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
   // minuteNumberOnly.value
