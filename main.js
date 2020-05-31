@@ -33,66 +33,37 @@ startActivityButton.addEventListener('click', addSecondAlert);
 var activityInformation = [];
 var selectedCategory
 
-// function alertEmptyInputField() {
-//   if (intentionInformation.value === '' && minutesNumberOnly.value === '' && secondsNumberOnly.value === '') {
-//     alertEmptySeconds.classList.remove('hide');
-//     alertEmptyMinutes.classList.remove('hide');
-//     alertEmptyText.classList.remove('hide');
-//   } else if (intentionInformation.value === '' && minutesNumberOnly.value === '') {
-//     alertEmptyText.classList.add('hide');
-//     alertEmptySeconds.classList.remove('hide');
-//     alertEmptyMinutes.classList.add('hide');
-//   } else if (minutesNumberOnly.value === '') {
-//     alertEmptyMinutes.classList.remove('hide');
-//     alertEmptyText.classList.add('hide');
-//     alertEmptySeconds.classList.add('hide');
-//   } else if (secondsNumberOnly.value === '') {
-//     alertEmptySeconds.classList.remove('hide');
-//     alertEmptyMinutes.classList.add('hide');
-//     alertEmptyText.classList.add('hide');
-//   } else {
-//     displayTimerCard();
-//   }
-// }
-
-function alertEmptyInputField() {
-  if(activityInformation[0].description === ''){
+function addIntentionAlert() {
+  if (intentionInformation.value.length === 0) {
     alertEmptyText.classList.remove('hide');
   }
-  if(activityInformation[0].minutes === ''){
+  if (intentionInformation.value.length > 0) {
+    alertEmptyText.classList.add('hide')
+  }
+}
+function addMinuteAlert() {
+  if (minutesNumberOnly.value.length === 0) {
     alertEmptyMinutes.classList.remove('hide');
   }
-  if(activityInformation[0].seconds === ''){
+  if (minutesNumberOnly.value.length > 0) {
+    alertEmptyMinutes.classList.add('hide');
+  }
+}
+function addSecondAlert() {
+  if (secondsNumberOnly.value.length === 0) {
     alertEmptySeconds.classList.remove('hide');
   }
-};
-
-
+  if (secondsNumberOnly.value.length > 0) {
+    alertEmptySeconds.classList.add('hide');
+  }
+}
 
 function storeInformation(event) {
   event.preventDefault();
   var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
-  activityInformation.unshift(activityInstance)
-  alertEmptyInputField();
-  // displayTimerCard();
+  activityInformation.unshift(activityInstance);
 }
 
-
-
-// function assignCorrectCircleColor() {
-// }
-
-// function displayUserInput() {
-//   userTimerCard.innerHTML = '';
-//   userTimerCard.innerHTML += `<h3 class="user-intention">${activityInformation[0].description}</h3>
-//     <p class="timer-text"><span class="minute-text">${activityInformation[0].minutes}</span>:<span class="seconds-text">${activityInformation[0].seconds}</span></p>
-//     <button class="timer-button">START</button>
-//     <button class="log-activity-button">LOG ACTIVITY</button>
-//     `
-//     if(activityInformation[0].category === 'study') {
-//       timerButton.classList.add('.green-circle');
-//     }
-// }
 
 function displayUserInput() {
   userInput.innerHTML = '';
