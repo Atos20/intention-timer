@@ -22,7 +22,7 @@ var alertEmptyMinutes = document.querySelector('.alert-empty-minutes');
 var alertEmptySeconds = document.querySelector('.alert-empty-seconds');
 var alertUnselectedActivity = document.querySelector('.alert-unselected-activity');
 var minuteText = document.querySelector('.minute-text');
-var secondsText = document.querySelector('.second-text');
+var secondsText = document.querySelector('.seconds-text');
 
 
 studyButton.addEventListener('click', changeColorOfStudyButton);
@@ -35,7 +35,7 @@ startActivityButton.addEventListener('click', addSecondAlert);
 startActivityButton.addEventListener('click', iconAlert);
 startActivityButton.addEventListener('click', allowDisplayTimerCard);
 timerButton.addEventListener('click', timerStart);
-timerButton.addEventListener('click', totalSeconds);
+startActivityButton.addEventListener('click', totalSeconds);
 
 var activityInformation = [];
 var selectedCategory
@@ -57,6 +57,7 @@ function addIntentionAlert() {
     alertEmptyText.classList.add('hide')
   }
 }
+
 function addMinuteAlert() {
   if (minutesNumberOnly.value.length === 0) {
     alertEmptyMinutes.classList.remove('hide');
@@ -65,6 +66,7 @@ function addMinuteAlert() {
     alertEmptyMinutes.classList.add('hide');
   }
 }
+
 function addSecondAlert() {
   if (secondsNumberOnly.value.length === 0) {
     alertEmptySeconds.classList.remove('hide');
@@ -86,7 +88,6 @@ function storeInformation(event) {
   activityInformation.unshift(activityInstance);
 }
 
-
 function displayUserInput() {
   userInput.innerHTML = '';
   userInput.innerHTML += `<h3 class="user-intention">${activityInformation[0].description}</h3>
@@ -107,40 +108,38 @@ function totalSeconds() {
 
 function timerStart() {
   var intentionTimer = setInterval(countdown, 1000);
-  var totalSeconds = totalSeconds();
+  var allSeconds = totalSeconds();
   function countdown() {
-    minuteText.innerText = Math.floor( (totalSeconds/60) % 60 );
-    secondsText.innerText = Math.floor( (totalSeconds--) % 60 );
-    if (secondsText.innerText < 10) {
-      secondsText.innerText = ('0' + secondsText.innerText);
-    }
+    allSeconds--
+    // console.log(allSeconds)
+    userInput.innerHTML = '';
+    userInput.innerHTML += `<h3 class="user-intention">${activityInformation[0].description}</h3>
+    <p class="timer-text"><span class="minute-text">${Math.floor( (allSeconds/60) % 60 )}</span>:<span class="seconds-text">${Math.floor( (allSeconds) % 60 )}</span></p>`
   }
-}
+    console.log(secondsText.innerText < 10)
+    if (secondsText <= 0) {
+      return
+    }
 
-// function addTotalSeconds() {
-//   return ((parseInt(minuteInput.value) * 60) + (parseInt(secondInput.value)));
-// }
-// function timerStart() {
-//   var myTimer = setInterval(clock, 1000);
-//   var totalSeconds = addTotalSeconds();
-//   function clock() {
-//     minutes.innerText = Math.floor( (totalSeconds/60) % 60 );
-//     seconds.innerText = Math.floor( (totalSeconds--) % 60 );
-//     if (seconds.innerText < 10) {
-//       seconds.innerText = ('0' + seconds.innerText);
-//     }
-//     if (totalSeconds < 0) {
-//       clearInterval(myTimer);
-//       timerButton.innerText = "YOU'RE AMAZING!";
-//       logActButton.classList.remove('hidden');
-//     }
-//   }
-// }
+
+    // if (document.querySelector('.seconds-text').innerText < 10) {
+    //   // secondsText.innerText = (`'0' + ${secondsText}.innerText`);
+    //   userInput.innerHTML = '';
+    //   userInput.innerHTML += `<h3 class="user-intention">${activityInformation[0].description}</h3>
+    //   <p class="timer-text"><span class="minute-text">${Math.floor( (allSeconds/60) % 60 )}</span>:<span class="seconds-text">${Unicorn}</span></p>`
+    }
+
+
+
+
+
+
+
+
 
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
   // minuteNumberOnly.value
-  console.log(event);
   var key1 = event.keyCode;
   if((key1 < 48 || key1 > 57)) {
     event.preventDefault();
