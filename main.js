@@ -30,16 +30,18 @@ startActivityButton.addEventListener('click', addIntentionAlert);
 startActivityButton.addEventListener('click', addMinuteAlert);
 startActivityButton.addEventListener('click', addSecondAlert);
 startActivityButton.addEventListener('click', iconAlert);
+startActivityButton.addEventListener('click', allowDisplayTimerCard)
 
 var activityInformation = [];
 var selectedCategory
 
-function iconAlert () {
+function iconAlert() {
   if(studyButton.classList.contains('green') === false && meditateButton.classList.contains('purple') === false && exerciseButton.classList.contains('red') === false) {
     alertUnselectedActivity.classList.remove('hide');
    }
-   // if(studyButton.classList.contains('green') !== false && meditateButton.classList.contains('purple') !== false && exerciseButton.classList.contains('red') !== false) {
-   //   alertUnselectedActivity.classList.add('hide');
+   if(studyButton.classList.contains('green') || meditateButton.classList.contains('purple') || exerciseButton.classList.contains('red')) {
+     alertUnselectedActivity.classList.add('hide');
+   }
 }
 
 function addIntentionAlert() {
@@ -67,6 +69,11 @@ function addSecondAlert() {
   }
 }
 
+function allowDisplayTimerCard() {
+  if ((studyButton.classList.contains('green') || meditateButton.classList.contains('purple') || exerciseButton.classList.contains('red')) && (intentionInformation.value.length > 0) && (minutesNumberOnly.value.length > 0) && (secondsNumberOnly.value.length > 0)) {
+    displayTimerCard()
+  }
+}
 
 function storeInformation(event) {
   event.preventDefault();
