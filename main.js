@@ -117,7 +117,6 @@ function timerStart() {
       secondsText.innerText = `0`;
       minutesText.innerText = `0`
       clearInterval(intentionTimer);
-      alert("hello");
       timerButton.innerText = `WELL-DONE`
       timerButton.disabled = true;
     }
