@@ -118,18 +118,23 @@ function timerStart() {
     allSeconds--
     minutesText.innerText = Math.floor( (allSeconds/60) % 60 )
     secondsText.innerText = Math.floor( (allSeconds) % 60 );
+    // secondsText.innerText = Math.floor( (allSeconds) % 60 ); => secondsText.innerText = Math.floor(allSeconds % 60);
+    // secondsText.innerText = ('0' + secondsText.innerText); => secondsText.innerText = '0' + secondsText.innerText;
     if (allSeconds < 0) {
-      secondsText.innerText = `0`;
-      minutesText.innerText = `0`
-      clearInterval(intentionTimer);
-      timerButton.innerText = `WELL-DONE`
-      timerButton.disabled = true;
+       clearInterval(intentionTimer);
+       secondsText.innerText = `0`;
+       minutesText.innerText = `0`
+       timerButton.innerText = `WELL-DONE`
+       timerButton.disabled = true;
     }
     if (secondsText.innerText < 10) {
       secondsText.innerText = ('0' + secondsText.innerText);
     }
   }
 }
+
+
+
 
 function logActivity() {
   noActivitiesMessage.classList.add('hide');
