@@ -31,12 +31,14 @@ var activityColorTag = document.querySelector('.activity-color-tag')
 studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
 exerciseButton.addEventListener('click', changeColorOfExerciseButton);
-startActivityButton.addEventListener('click', storeInformation);
-startActivityButton.addEventListener('click', addIntentionAlert);
-startActivityButton.addEventListener('click', addMinuteAlert);
-startActivityButton.addEventListener('click', addSecondAlert);
-startActivityButton.addEventListener('click', iconAlert);
-startActivityButton.addEventListener('click', allowDisplayTimerCard);
+//event listener on line 35 is to handle all event listeners lines 36-41 and refers to the startActivity function
+startActivityButton.addEventListener('click', startActivity)
+// startActivityButton.addEventListener('click', storeInformation);
+// startActivityButton.addEventListener('click', addIntentionAlert);
+// startActivityButton.addEventListener('click', addMinuteAlert);
+// startActivityButton.addEventListener('click', addSecondAlert);
+// startActivityButton.addEventListener('click', iconAlert);
+// startActivityButton.addEventListener('click', allowDisplayTimerCard);
 timerButton.addEventListener('click', timerStart);
 startActivityButton.addEventListener('click', totalSeconds);
 logActivityButton.addEventListener('click', logActivity)
@@ -44,6 +46,15 @@ logActivityButton.addEventListener('click', logActivity)
 var activityInformation = [];
 var selectedCategory
 
+function startActivity(event) {
+  event.preventDefault();
+  storeInformation();
+  addIntentionAlert();
+  addMinuteAlert();
+  addSecondAlert();
+  iconAlert();
+  allowDisplayTimerCard();
+}
 
 function iconAlert() {
   if(studyButton.classList.contains('green') ||
