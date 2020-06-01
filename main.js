@@ -114,12 +114,12 @@ function timerStart() {
     minutesText.innerText = Math.floor( (allSeconds/60) % 60 )
     secondsText.innerText = Math.floor( (allSeconds) % 60 );
     if (allSeconds < 0) {
-      secondsText.innerText = `00`;
+      secondsText.innerText = `0`;
       minutesText.innerText = `0`
       clearInterval(intentionTimer);
       alert("hello");
-      minutesText.innerText = `WELL`
-      secondsText.innerText = `DONE`;
+      timerButton.innerText = `WELL-DONE`
+      timerButton.disabled = true;
     }
     if (secondsText.innerText < 10) {
       secondsText.innerText = ('0' + secondsText.innerText);
