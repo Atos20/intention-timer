@@ -110,10 +110,19 @@ function timerStart() {
   var intentionTimer = setInterval(countdown, 1000);
   var allSeconds = totalSeconds();
   function countdown() {
-    allSeconds--
+    console.log(allSeconds)
+    if(allSeconds > 0){
+      allSeconds--
+    } else{
+      window.alert("YAY!")
+      return
+    }
     minutesText.innerText = Math.floor( (allSeconds/60) % 60 )
     secondsText.innerText = Math.floor( (allSeconds) % 60 );
-    if (secondsText.innerText < 10) {
+    if(secondsText.innerText < 0){
+      secondsText.innerText = `00`;
+      minutesText.innerText = `0`;
+    }else if (secondsText.innerText < 10){
       secondsText.innerText = ('0' + secondsText.innerText);
     }
   }
