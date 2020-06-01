@@ -23,6 +23,7 @@ var alertEmptySeconds = document.querySelector('.alert-empty-seconds');
 var alertUnselectedActivity = document.querySelector('.alert-unselected-activity');
 var minutesText = document.querySelector('.minutes-text');
 var secondsText = document.querySelector('.seconds-text');
+var logActivityButton = document.querySelector('.log-activity-button')
 
 
 studyButton.addEventListener('click', changeColorOfStudyButton);
@@ -36,6 +37,7 @@ startActivityButton.addEventListener('click', iconAlert);
 startActivityButton.addEventListener('click', allowDisplayTimerCard);
 timerButton.addEventListener('click', timerStart);
 startActivityButton.addEventListener('click', totalSeconds);
+logActivityButton.addEventListener('click', logActivity)
 
 var activityInformation = [];
 var selectedCategory
