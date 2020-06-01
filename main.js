@@ -24,6 +24,8 @@ var alertUnselectedActivity = document.querySelector('.alert-unselected-activity
 var minutesText = document.querySelector('.minutes-text');
 var secondsText = document.querySelector('.seconds-text');
 var logActivityButton = document.querySelector('.log-activity-button')
+var noActivitiesMessage = document.querySelector('.no-activities-message')
+var cardContainer = document.querySelector('.card-container')
 
 
 studyButton.addEventListener('click', changeColorOfStudyButton);
@@ -126,6 +128,11 @@ function timerStart() {
       secondsText.innerText = ('0' + secondsText.innerText);
     }
   }
+}
+
+function logActivity() {
+  noActivitiesMessage.classList.add('hide');
+  cardContainer.classList.remove('hide');
 }
 
 minutesNumberOnly.addEventListener('keypress', function(event) {

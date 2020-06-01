@@ -184,9 +184,6 @@ p {
   font-size: .8em;
 }
 
-.hide {
-  display: none;
-}
 
 main {
   display: grid;
@@ -215,6 +212,15 @@ h3 {
   text-align: center;
   line-height: 2em;
   margin: 0 50px 0 50px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.hide {
+  display: none;
 }
 
 .past-activity-card {
