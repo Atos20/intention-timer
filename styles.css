@@ -235,7 +235,6 @@ h3 {
 .activity-color-tag {
   width: .2em;
   height: 2em;
-  background-color: #C278FD;
   grid-area: 1 / 2 / 3 / 3;
   display: flex;
   justify-self: end;
