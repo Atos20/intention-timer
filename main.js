@@ -108,7 +108,7 @@ function displayTimerCard() {
 
 
 function totalSeconds() {
-  return ((parseInt(activityInformation[0].minutes) * 60) + (parseInt(activityInformation[0].seconds)))
+  return parseInt(activityInformation[0].minutes) * 60 + parseInt(activityInformation[0].seconds)
 }
 
 function timerStart() {
