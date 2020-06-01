@@ -184,9 +184,6 @@ p {
   font-size: .8em;
 }
 
-.hide {
-  display: none;
-}
 
 main {
   display: grid;
@@ -217,6 +214,15 @@ h3 {
   margin: 0 50px 0 50px;
 }
 
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.hide {
+  display: none;
+}
+
 .past-activity-card {
   background-color: #46424D;
   display: grid;
@@ -229,7 +235,6 @@ h3 {
 .activity-color-tag {
   width: .2em;
   height: 2em;
-  background-color: #C278FD;
   grid-area: 1 / 2 / 3 / 3;
   display: flex;
   justify-self: end;

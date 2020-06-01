@@ -23,7 +23,10 @@ var alertEmptySeconds = document.querySelector('.alert-empty-seconds');
 var alertUnselectedActivity = document.querySelector('.alert-unselected-activity');
 var minutesText = document.querySelector('.minutes-text');
 var secondsText = document.querySelector('.seconds-text');
-
+var logActivityButton = document.querySelector('.log-activity-button')
+var noActivitiesMessage = document.querySelector('.no-activities-message')
+var cardContainer = document.querySelector('.card-container')
+var activityColorTag = document.querySelector('.activity-color-tag')
 
 studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
@@ -36,6 +39,7 @@ startActivityButton.addEventListener('click', iconAlert);
 startActivityButton.addEventListener('click', allowDisplayTimerCard);
 timerButton.addEventListener('click', timerStart);
 startActivityButton.addEventListener('click', totalSeconds);
+logActivityButton.addEventListener('click', logActivity)
 
 var activityInformation = [];
 var selectedCategory
@@ -82,8 +86,19 @@ function allowDisplayTimerCard() {
   }
 }
 
+function assignCategory() {
+  if(studyButton.classList.contains('green')) {
+    selectedCategory = 'Study';
+  } else if(meditateButton.classList.contains('purple')) {
+    selectedCategory = 'Meditate';
+  } else if(exerciseButton.classList.contains('red')) {
+    selectedCategory = 'Exercise';
+  }
+}
+
 function storeInformation(event) {
   event.preventDefault();
+  assignCategory()
   var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
   activityInformation.unshift(activityInstance);
 }
@@ -117,13 +132,31 @@ function timerStart() {
       secondsText.innerText = `0`;
       minutesText.innerText = `0`
       clearInterval(intentionTimer);
-      alert("hello");
       timerButton.innerText = `WELL-DONE`
       timerButton.disabled = true;
     }
     if (secondsText.innerText < 10) {
       secondsText.innerText = ('0' + secondsText.innerText);
     }
+  }
+}
+
+function logActivity() {
+  noActivitiesMessage.classList.add('hide');
+  cardContainer.classList.remove('hide');
+  cardContainer.innerHTML = '';
+  cardContainer.innerHTML = `<article class="past-activity-card">
+          <p class="past-activity">${activityInformation[0].category}</p>
+          <p class="past-time"><span>${activityInformation[0].minutes}</span>MIN<span>${activityInformation[0].seconds}</span>SECONDS</p>
+          <p class="past-intention">${activityInformation[0].description}</p>
+          <div class="activity-color-tag"></div>
+        </article>`
+        assignTagColor();
+}
+
+function assignTagColor() {
+  if(activityInformation[0].category === 'Study') {
+  activityColorTag.classList.add('green')
   }
 }
 
