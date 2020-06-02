@@ -26,6 +26,8 @@ class Activity {
   }
   saveToStorage() {
 //using every property in the class
+    localStorage.setItem('activityInformation', JSON.stringify(activityInformation));
+    // logActivity(activityInformation)
   }
 }
 

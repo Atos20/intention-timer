@@ -93,6 +93,7 @@ function allowDisplayTimerCard() {
 function storeInformation() {
   var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
   activityInformation.unshift(activityInstance);
+  activityInformation[0].saveToStorage();
 }
 
 function displayTimerCard() {
