@@ -29,13 +29,9 @@ var cardContainer = document.querySelector('.card-container')
 var activityColorTag = document.querySelector('.activity-color-tag')
 var activityButtonContainer = document.querySelector('.activity-button-container')
 
-// studyButton.addEventListener('click', selectStudyButton);
-// meditateButton.addEventListener('click', selectMeditateButton);
-// exerciseButton.addEventListener('click', selectExerciseButton);
 activityButtonContainer.addEventListener('click', activityButton)
 startActivityButton.addEventListener('click', startActivity)
 timerButton.addEventListener('click', timerStart);
-// startActivityButton.addEventListener('click', totalSeconds);
 logActivityButton.addEventListener('click', logActivity)
 
 var activityInformation = [];
@@ -55,9 +51,9 @@ function iconAlert() {
   if(studyButton.classList.contains('green') ||
     meditateButton.classList.contains('purple') ||
     exerciseButton.classList.contains('red')) {
-    alertUnselectedActivity.classList.add('hide')
+    alertUnselectedActivity.classList.add('hide');
   } else {
-    alertUnselectedActivity.classList.remove('hide')
+    alertUnselectedActivity.classList.remove('hide');
   }
 }
 
@@ -90,7 +86,6 @@ function allowDisplayTimerCard() {
     displayTimerCard()
   }
 }
-
 
 function storeInformation() {
   var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
@@ -131,25 +126,27 @@ function timerComplete() {
   timerButton.disabled = true;
 }
 
-
-
-
 function logActivity() {
-  noActivitiesMessage.classList.add('hide');
-  cardContainer.classList.remove('hide');
   cardContainer.innerHTML = '';
   cardContainer.innerHTML = `<article class="past-activity-card">
-          <p class="past-activity">${activityInformation[0].category}</p>
-          <p class="past-time"><span>${activityInformation[0].minutes}</span>MIN<span>${activityInformation[0].seconds}</span>SECONDS</p>
-          <p class="past-intention">${activityInformation[0].description}</p>
-          <div class="activity-color-tag"></div>
-        </article>`
-        assignTagColor();
+    <p class="past-activity">${activityInformation[0].category}</p>
+    <p class="past-time"><span>${activityInformation[0].minutes}</span>MIN<span>${activityInformation[0].seconds}</span>SECONDS</p>
+    <p class="past-intention">${activityInformation[0].description}</p>
+    <div class="activity-color-tag green purple red"></div>
+  </article>`
+  assignTagColor();
+  noActivitiesMessage.classList.add('hide');
+  cardContainer.classList.remove('hide');
 }
 
 function assignTagColor() {
   if(activityInformation[0].category === 'Study') {
-  activityColorTag.classList.add('green')
+  activityColorTag.classList.remove('purple');
+  activityColorTag.classList.remove('red');
+  // } else if(activityInformation[0].category === 'Meditate') {
+  // activityColorTag.classList.add('purple');
+  // } else if(activityInformation[0].category === 'Exercise') {
+  // activityColorTag.classList.add('red');
   }
 }
 
