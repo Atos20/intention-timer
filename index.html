@@ -16,7 +16,7 @@
       <h2>New Activity</h2>
       <section ="activity-card">
         <p class="card-text">Select a category</p>
-        <div>
+        <div class="activity-button-container">
           <button class="activity-button study-button"><img class="icon study-icon" src="assets/study.svg" alt="Lightbulb Off"/><img class="icon study-icon-active hide" src="assets/study-active.svg" alt="Lightbulb On"/>Study</button>
           <button class="activity-button meditate-button"><img class="icon meditate-icon" src="assets/meditate.svg" alt="Lotus Flower"/><img class="icon meditate-icon-active hide" src="assets/meditate-active.svg" alt="Lotus Flower On"/>Meditate</button>
           <button class="activity-button exercise-button"><img class="icon exercise-icon" src="assets/exercise.svg" alt="Moving Shoe"/><img class="icon exercise-icon-active hide" src="assets/exercise-active.svg" alt="Moving Shoe On"/>Exercise</button>
@@ -42,7 +42,7 @@
         </form>
       </section>
     </article>
-    <article class="hide timer-card-article">
+    <article class="timer-card-article hide">
       <h2>Current Activity</h2>
       <section class="timer-card">
         <div class="user-input">
@@ -53,7 +53,7 @@
         <button class="log-activity-button">LOG ACTIVITY</button>
       </section>
     </article>
-    <article class="hide">
+    <article class="completed-activity hide">
       <h2>Completed Activity</h2>
       <section>
         <button class="new-activity-button">CREATE A NEW ACTIVITY</button>
@@ -64,12 +64,7 @@
     <p class="no-activities-message">You haven't logged any activities yet.  Complete the form to the left to get started!</p>
     <div class="card-container hide">
       <article class="past-activity-card">
-
-        <p class="past-activity">Mediate</p>
-        <p class="past-time">5 MIN 0 SECONDS</p>
-        <p class="past-intention">Deep Breathing</p>
-
-        <div class="activity-color-tag"></div>
+        <div class="activity-color-tag green purple red"></div>
       </article>
     </div>
   </aside>
