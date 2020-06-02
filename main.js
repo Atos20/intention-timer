@@ -143,6 +143,7 @@ function logActivity() {
   // assignTagColor();
   timerCard.classList.add('hide');
   completedActivity.classList.remove('hide');
+  timerButton.disabled = false;
 }
 
 // function assignTagColor() {
@@ -159,6 +160,7 @@ function logActivity() {
 function returnHome() {
   completedActivity.classList.add('hide');
   activityCard.classList.remove('hide');
+  timerButton.innerText = `START`
 }
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
