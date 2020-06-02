@@ -119,13 +119,13 @@ function timerStart() {
       secondsText.innerText = ('0' + secondsText.innerText);
     }
   }
+  timerButton.disabled = true;
 }
 
 function timerComplete() {
   secondsText.innerText = `0`;
   minutesText.innerText = `0`
   timerButton.innerText = `WELL-DONE`
-  timerButton.disabled = true;
 }
 
 function logActivity() {
