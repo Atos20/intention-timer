@@ -157,11 +157,13 @@ function logActivity() {
 //   }
 // }
 
-function clearField() {
+function clearForm() {
     intentionInformation.value = "";
-  
     minutesNumberOnly.value = "";
     secondsNumberOnly.value = "";
+    unselectStudy();
+    unselectMeditate();
+    unselectExercise();
 };
 
 
@@ -169,7 +171,8 @@ function returnHome() {
   completedActivity.classList.add('hide');
   activityCard.classList.remove('hide');
   timerButton.innerText = `START`
-  clearField();
+  clearForm();
+
 }
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
