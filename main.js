@@ -31,12 +31,14 @@ var activityColorTag = document.querySelector('.activity-color-tag')
 studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
 exerciseButton.addEventListener('click', changeColorOfExerciseButton);
-startActivityButton.addEventListener('click', storeInformation);
-startActivityButton.addEventListener('click', addIntentionAlert);
-startActivityButton.addEventListener('click', addMinuteAlert);
-startActivityButton.addEventListener('click', addSecondAlert);
-startActivityButton.addEventListener('click', iconAlert);
-startActivityButton.addEventListener('click', allowDisplayTimerCard);
+//event listener on line 35 is to handle all event listeners lines 36-41 and refers to the startActivity function
+startActivityButton.addEventListener('click', startActivity)
+// startActivityButton.addEventListener('click', storeInformation);
+// startActivityButton.addEventListener('click', addIntentionAlert);
+// startActivityButton.addEventListener('click', addMinuteAlert);
+// startActivityButton.addEventListener('click', addSecondAlert);
+// startActivityButton.addEventListener('click', iconAlert);
+// startActivityButton.addEventListener('click', allowDisplayTimerCard);
 timerButton.addEventListener('click', timerStart);
 startActivityButton.addEventListener('click', totalSeconds);
 logActivityButton.addEventListener('click', logActivity)
@@ -44,20 +46,30 @@ logActivityButton.addEventListener('click', logActivity)
 var activityInformation = [];
 var selectedCategory
 
+function startActivity(event) {
+  event.preventDefault();
+  storeInformation();
+  addIntentionAlert();
+  addMinuteAlert();
+  addSecondAlert();
+  iconAlert();
+  allowDisplayTimerCard();
+}
+
 function iconAlert() {
-  if(studyButton.classList.contains('green') === false && meditateButton.classList.contains('purple') === false && exerciseButton.classList.contains('red') === false) {
-    alertUnselectedActivity.classList.remove('hide');
-   }
-   if(studyButton.classList.contains('green') || meditateButton.classList.contains('purple') || exerciseButton.classList.contains('red')) {
-     alertUnselectedActivity.classList.add('hide');
-   }
+  if(studyButton.classList.contains('green') ||
+    meditateButton.classList.contains('purple') ||
+    exerciseButton.classList.contains('red')) {
+    alertUnselectedActivity.classList.add('hide')
+  } else {
+    alertUnselectedActivity.classList.remove('hide')
+  }
 }
 
 function addIntentionAlert() {
   if (intentionInformation.value.length === 0) {
     alertEmptyText.classList.remove('hide');
-  }
-  if (intentionInformation.value.length > 0) {
+  } else {
     alertEmptyText.classList.add('hide')
   }
 }
@@ -65,8 +77,7 @@ function addIntentionAlert() {
 function addMinuteAlert() {
   if (minutesNumberOnly.value.length === 0) {
     alertEmptyMinutes.classList.remove('hide');
-  }
-  if (minutesNumberOnly.value.length > 0) {
+  } else {
     alertEmptyMinutes.classList.add('hide');
   }
 }
@@ -74,8 +85,7 @@ function addMinuteAlert() {
 function addSecondAlert() {
   if (secondsNumberOnly.value.length === 0) {
     alertEmptySeconds.classList.remove('hide');
-  }
-  if (secondsNumberOnly.value.length > 0) {
+  } else {
     alertEmptySeconds.classList.add('hide');
   }
 }
@@ -86,19 +96,10 @@ function allowDisplayTimerCard() {
   }
 }
 
-function assignCategory() {
-  if(studyButton.classList.contains('green')) {
-    selectedCategory = 'Study';
-  } else if(meditateButton.classList.contains('purple')) {
-    selectedCategory = 'Meditate';
-  } else if(exerciseButton.classList.contains('red')) {
-    selectedCategory = 'Exercise';
-  }
-}
 
 function storeInformation(event) {
   event.preventDefault();
-  assignCategory()
+  // assignCategory()
   var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
   activityInformation.unshift(activityInstance);
 }
@@ -118,7 +119,7 @@ function displayTimerCard() {
 
 
 function totalSeconds() {
-  return ((parseInt(activityInformation[0].minutes) * 60) + (parseInt(activityInformation[0].seconds)))
+  return parseInt(activityInformation[0].minutes) * 60 + parseInt(activityInformation[0].seconds)
 }
 
 function timerStart() {
@@ -128,18 +129,23 @@ function timerStart() {
     allSeconds--
     minutesText.innerText = Math.floor( (allSeconds/60) % 60 )
     secondsText.innerText = Math.floor( (allSeconds) % 60 );
+    // secondsText.innerText = Math.floor( (allSeconds) % 60 ); => secondsText.innerText = Math.floor(allSeconds % 60);
+    // secondsText.innerText = ('0' + secondsText.innerText); => secondsText.innerText = '0' + secondsText.innerText;
     if (allSeconds < 0) {
-      secondsText.innerText = `0`;
-      minutesText.innerText = `0`
-      clearInterval(intentionTimer);
-      timerButton.innerText = `WELL-DONE`
-      timerButton.disabled = true;
+       clearInterval(intentionTimer);
+       secondsText.innerText = `0`;
+       minutesText.innerText = `0`
+       timerButton.innerText = `WELL-DONE`
+       timerButton.disabled = true;
     }
     if (secondsText.innerText < 10) {
       secondsText.innerText = ('0' + secondsText.innerText);
     }
   }
 }
+
+
+
 
 function logActivity() {
   noActivitiesMessage.classList.add('hide');
@@ -175,7 +181,11 @@ secondsNumberOnly.addEventListener('keypress', function(event) {
   }
 })
 
+
+
+
 function changeColorOfStudyButton() {
+  selectedCategory = 'Study';
   studyButton.classList.toggle('green');
   studyButton.classList.toggle('white');
   studyIcon.classList.toggle('hide')
@@ -190,6 +200,7 @@ function changeColorOfStudyButton() {
 }
 
 function changeColorOfMeditateButton() {
+  selectedCategory = 'Meditate';
   meditateButton.classList.toggle('purple');
   meditateButton.classList.toggle('white');
   meditateIcon.classList.toggle('hide');
@@ -204,6 +215,7 @@ function changeColorOfMeditateButton() {
 }
 
 function changeColorOfExerciseButton() {
+  selectedCategory = 'Exercise';
   exerciseButton.classList.toggle('red');
   exerciseButton.classList.toggle('white');
   exerciseIcon.classList.toggle('hide');
