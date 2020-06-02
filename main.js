@@ -28,11 +28,14 @@ var noActivitiesMessage = document.querySelector('.no-activities-message')
 var cardContainer = document.querySelector('.card-container')
 var activityColorTag = document.querySelector('.activity-color-tag')
 var activityButtonContainer = document.querySelector('.activity-button-container')
+var completedActivity = document.querySelector('.completed-activity')
+var newActivityButton = document.querySelector('.new-activity-button')
 
-activityButtonContainer.addEventListener('click', activityButton)
-startActivityButton.addEventListener('click', startActivity)
+activityButtonContainer.addEventListener('click', activityButton);
+startActivityButton.addEventListener('click', startActivity);
 timerButton.addEventListener('click', timerStart);
-logActivityButton.addEventListener('click', logActivity)
+logActivityButton.addEventListener('click', logActivity);
+newActivityButton.addEventListener('click', returnHome)
 
 var activityInformation = [];
 var selectedCategory
@@ -127,6 +130,8 @@ function timerComplete() {
 }
 
 function logActivity() {
+  noActivitiesMessage.classList.add('hide');
+  cardContainer.classList.remove('hide');
   cardContainer.innerHTML = '';
   cardContainer.innerHTML = `<article class="past-activity-card">
     <p class="past-activity">${activityInformation[0].category}</p>
@@ -134,20 +139,25 @@ function logActivity() {
     <p class="past-intention">${activityInformation[0].description}</p>
     <div class="activity-color-tag green purple red"></div>
   </article>`
-  assignTagColor();
-  noActivitiesMessage.classList.add('hide');
-  cardContainer.classList.remove('hide');
+  // assignTagColor();
+  timerCard.classList.add('hide');
+  completedActivity.classList.remove('hide');
 }
 
-function assignTagColor() {
-  if(activityInformation[0].category === 'Study') {
-  activityColorTag.classList.remove('purple');
-  activityColorTag.classList.remove('red');
+// function assignTagColor() {
+//   if(activityInformation[0].category === 'Study') {
+//   activityColorTag.classList.remove('purple');
+//   activityColorTag.classList.remove('red');
   // } else if(activityInformation[0].category === 'Meditate') {
   // activityColorTag.classList.add('purple');
   // } else if(activityInformation[0].category === 'Exercise') {
   // activityColorTag.classList.add('red');
-  }
+//   }
+// }
+
+function returnHome() {
+  completedActivity.classList.add('hide');
+  activityCard.classList.remove('hide');
 }
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
