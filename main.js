@@ -29,9 +29,9 @@ var cardContainer = document.querySelector('.card-container')
 var activityColorTag = document.querySelector('.activity-color-tag')
 var activityButtonContainer = document.querySelector('.activity-button-container')
 
-// studyButton.addEventListener('click', changeColorOfStudyButton);
-// meditateButton.addEventListener('click', changeColorOfMeditateButton);
-// exerciseButton.addEventListener('click', changeColorOfExerciseButton);
+// studyButton.addEventListener('click', selectStudyButton);
+// meditateButton.addEventListener('click', selectMeditateButton);
+// exerciseButton.addEventListener('click', selectExerciseButton);
 activityButtonContainer.addEventListener('click', activityButton)
 startActivityButton.addEventListener('click', startActivity)
 timerButton.addEventListener('click', timerStart);
@@ -170,11 +170,11 @@ secondsNumberOnly.addEventListener('keypress', function(event) {
 
 function activityButton(event) {
   if(event.target.classList.contains('study-button')) {
-    changeColorOfStudyButton()
+    selectStudyButton()
   } else if(event.target.classList.contains('meditate-button')) {
-    changeColorOfMeditateButton()
+    selectMeditateButton()
   } else if(event.target.classList.contains('exercise-button')) {
-    changeColorOfExerciseButton()
+    selectExerciseButton()
   }
 }
 
@@ -196,7 +196,7 @@ function unselectExercise() {
   exerciseButton.classList.remove('red');
 }
 
-function changeColorOfStudyButton() {
+function selectStudyButton() {
   selectedCategory = 'Study';
   studyButton.classList.toggle('green');
   studyButton.classList.toggle('white');
@@ -207,7 +207,7 @@ function changeColorOfStudyButton() {
   timerButton.classList.add('green-circle');
 }
 
-function changeColorOfMeditateButton() {
+function selectMeditateButton() {
   selectedCategory = 'Meditate';
   meditateButton.classList.toggle('purple');
   meditateButton.classList.toggle('white');
@@ -218,7 +218,7 @@ function changeColorOfMeditateButton() {
   timerButton.classList.add('purple-circle');
 }
 
-function changeColorOfExerciseButton() {
+function selectExerciseButton() {
   selectedCategory = 'Exercise';
   exerciseButton.classList.toggle('red');
   exerciseButton.classList.toggle('white');
