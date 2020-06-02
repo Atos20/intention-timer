@@ -27,10 +27,12 @@ var logActivityButton = document.querySelector('.log-activity-button')
 var noActivitiesMessage = document.querySelector('.no-activities-message')
 var cardContainer = document.querySelector('.card-container')
 var activityColorTag = document.querySelector('.activity-color-tag')
+var activityButtonContainer = document.querySelector('.activity-button-container')
 
-studyButton.addEventListener('click', changeColorOfStudyButton);
-meditateButton.addEventListener('click', changeColorOfMeditateButton);
-exerciseButton.addEventListener('click', changeColorOfExerciseButton);
+// studyButton.addEventListener('click', changeColorOfStudyButton);
+// meditateButton.addEventListener('click', changeColorOfMeditateButton);
+// exerciseButton.addEventListener('click', changeColorOfExerciseButton);
+activityButtonContainer.addEventListener('click', activityButton)
 startActivityButton.addEventListener('click', startActivity)
 timerButton.addEventListener('click', timerStart);
 // startActivityButton.addEventListener('click', totalSeconds);
@@ -166,8 +168,15 @@ secondsNumberOnly.addEventListener('keypress', function(event) {
   }
 })
 
-
-
+function activityButton(event) {
+  if(event.target.classList.contains('study-button')) {
+    changeColorOfStudyButton()
+  } else if(event.target.classList.contains('meditate-button')) {
+    changeColorOfMeditateButton()
+  } else if(event.target.classList.contains('exercise-button')) {
+    changeColorOfExerciseButton()
+  }
+}
 
 function changeColorOfStudyButton() {
   selectedCategory = 'Study';
