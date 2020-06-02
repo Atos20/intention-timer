@@ -38,6 +38,7 @@ newActivityButton.addEventListener('click', returnHome)
 
 var activityInformation = [];
 var selectedCategory
+var tagColor
 
 function startActivity(event) {
   event.preventDefault();
@@ -88,7 +89,7 @@ function allowDisplayTimerCard() {
 }
 
 function storeInformation() {
-  var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
+  var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, tagColor, undefined, undefined,);
   activityInformation.unshift(activityInstance);
   activityInformation[0].saveToStorage();
 }
@@ -131,27 +132,17 @@ function logActivity() {
   noActivitiesMessage.classList.add('hide');
   cardContainer.classList.remove('hide');
   cardContainer.innerHTML = '';
-  cardContainer.innerHTML = `<article class="past-activity-card">
-    <p class="past-activity">${activityInformation[0].category}</p>
-    <p class="past-time"><span>${activityInformation[0].minutes}</span>MIN<span>${activityInformation[0].seconds}</span>SECONDS</p>
-    <p class="past-intention">${activityInformation[0].description}</p>
-    <div class="activity-color-tag"></div>
-  </article>`
+  for (var i = 0; i < activityInformation.length; i++) {
+    cardContainer.innerHTML += `<article class="past-activity-card">
+    <p class="past-activity">${activityInformation[i].category}</p>
+    <p class="past-time"><span>${activityInformation[i].minutes}</span>MIN<span>${activityInformation[i].seconds}</span>SECONDS</p>
+    <p class="past-intention">${activityInformation[i].description}</p>
+    <div class="activity-color-tag ${activityInformation[i].tagColor}"></div>
+    </article>`
+  }
   timerCard.classList.add('hide');
   completedActivity.classList.remove('hide');
   timerButton.disabled = false;
-  assignTagColor();
-}
-
-function assignTagColor() {
-  var activityColorTag = document.querySelector('.activity-color-tag')
-  if(selectedCategory === 'Study') {
-  activityColorTag.classList.add('green')
-  } else if (selectedCategory === 'Exercise') {
-  activityColorTag.classList.add('red')
-  } else {
-  activityColorTag.classList.add('purple')
-  }
 }
 
 function clearForm() {
@@ -162,7 +153,6 @@ function clearForm() {
     unselectMeditate();
     unselectExercise();
 };
-
 
 function returnHome() {
   completedActivity.classList.add('hide');
@@ -217,6 +207,7 @@ function unselectExercise() {
 
 function selectStudyButton() {
   selectedCategory = 'Study';
+  tagColor = 'green';
   studyButton.classList.toggle('green');
   studyButton.classList.toggle('white');
   studyIcon.classList.toggle('hide');
@@ -228,6 +219,7 @@ function selectStudyButton() {
 
 function selectMeditateButton() {
   selectedCategory = 'Meditate';
+  tagColor = 'purple';
   meditateButton.classList.toggle('purple');
   meditateButton.classList.toggle('white');
   meditateIcon.classList.toggle('hide');
@@ -239,6 +231,7 @@ function selectMeditateButton() {
 
 function selectExerciseButton() {
   selectedCategory = 'Exercise';
+  tagColor = 'red';
   exerciseButton.classList.toggle('red');
   exerciseButton.classList.toggle('white');
   exerciseIcon.classList.toggle('hide');
