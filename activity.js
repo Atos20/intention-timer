@@ -1,18 +1,19 @@
 class Activity {
-  constructor(category, description, minutes, seconds,completed, id) {
+  constructor(category, description, minutes, seconds, tagColor, completed, id) {
     this.category = category;
     this.description = description;
     this.minutes = minutes;
     this.seconds = seconds;
+    this.tagColor = tagColor;
     this.completed = false;
     this.id = id || Date.now();
   }
   countdown() {
 //uses minutes and seconds
+  return parseInt(this.minutes) * 60 + parseInt(this.seconds)
+
   }
-  totalSeconds() {
-    return parseInt(this.minutes) * 60 + parseInt(this.seconds)
-  }
+
   display() {
     userIntention.innerText = this.description;
     minutesText.innerText = this.minutes;
