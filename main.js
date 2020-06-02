@@ -31,16 +31,9 @@ var activityColorTag = document.querySelector('.activity-color-tag')
 studyButton.addEventListener('click', changeColorOfStudyButton);
 meditateButton.addEventListener('click', changeColorOfMeditateButton);
 exerciseButton.addEventListener('click', changeColorOfExerciseButton);
-//event listener on line 35 is to handle all event listeners lines 36-41 and refers to the startActivity function
 startActivityButton.addEventListener('click', startActivity)
-// startActivityButton.addEventListener('click', storeInformation);
-// startActivityButton.addEventListener('click', addIntentionAlert);
-// startActivityButton.addEventListener('click', addMinuteAlert);
-// startActivityButton.addEventListener('click', addSecondAlert);
-// startActivityButton.addEventListener('click', iconAlert);
-// startActivityButton.addEventListener('click', allowDisplayTimerCard);
 timerButton.addEventListener('click', timerStart);
-startActivityButton.addEventListener('click', totalSeconds);
+// startActivityButton.addEventListener('click', totalSeconds);
 logActivityButton.addEventListener('click', logActivity)
 
 var activityInformation = [];
@@ -97,34 +90,22 @@ function allowDisplayTimerCard() {
 }
 
 
-function storeInformation(event) {
-  event.preventDefault();
-  // assignCategory()
+function storeInformation() {
   var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
   activityInformation.unshift(activityInstance);
-}
-
-function displayUserInput() {
-  userIntention.innerText = activityInformation[0].description;
-  minutesText.innerText = activityInformation[0].minutes;
-  secondsText.innerText = activityInformation[0].seconds;
 }
 
 function displayTimerCard() {
   timerCard.classList.remove('hide');
   activityCard.classList.add('hide');
-  displayUserInput();
-  // assignCorrectCircleColor();
-}
-
-
-function totalSeconds() {
-  return parseInt(activityInformation[0].minutes) * 60 + parseInt(activityInformation[0].seconds)
+  var activity = activityInformation[0];
+  activity.display();
 }
 
 function timerStart() {
   var intentionTimer = setInterval(countdown, 1000);
-  var allSeconds = totalSeconds();
+  var activity = activityInformation[0];
+  var allSeconds = activity.totalSeconds();
   function countdown() {
     allSeconds--
     minutesText.innerText = Math.floor( (allSeconds/60) % 60 )
@@ -132,16 +113,20 @@ function timerStart() {
     // secondsText.innerText = Math.floor( (allSeconds) % 60 ); => secondsText.innerText = Math.floor(allSeconds % 60);
     // secondsText.innerText = ('0' + secondsText.innerText); => secondsText.innerText = '0' + secondsText.innerText;
     if (allSeconds < 0) {
-       clearInterval(intentionTimer);
-       secondsText.innerText = `0`;
-       minutesText.innerText = `0`
-       timerButton.innerText = `WELL-DONE`
-       timerButton.disabled = true;
+      clearInterval(intentionTimer);
+      timerComplete();
     }
     if (secondsText.innerText < 10) {
       secondsText.innerText = ('0' + secondsText.innerText);
     }
   }
+}
+
+function timerComplete() {
+  secondsText.innerText = `0`;
+  minutesText.innerText = `0`
+  timerButton.innerText = `WELL-DONE`
+  timerButton.disabled = true;
 }
 
 
