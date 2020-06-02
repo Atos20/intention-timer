@@ -157,10 +157,19 @@ function logActivity() {
 //   }
 // }
 
+function clearField() {
+    intentionInformation.value = "";
+  
+    minutesNumberOnly.value = "";
+    secondsNumberOnly.value = "";
+};
+
+
 function returnHome() {
   completedActivity.classList.add('hide');
   activityCard.classList.remove('hide');
   timerButton.innerText = `START`
+  clearField();
 }
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
