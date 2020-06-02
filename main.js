@@ -26,7 +26,6 @@ var secondsText = document.querySelector('.seconds-text');
 var logActivityButton = document.querySelector('.log-activity-button')
 var noActivitiesMessage = document.querySelector('.no-activities-message')
 var cardContainer = document.querySelector('.card-container')
-var activityColorTag = document.querySelector('.activity-color-tag')
 var activityButtonContainer = document.querySelector('.activity-button-container')
 var completedActivity = document.querySelector('.completed-activity')
 var newActivityButton = document.querySelector('.new-activity-button')
@@ -138,24 +137,24 @@ function logActivity() {
     <p class="past-activity">${activityInformation[0].category}</p>
     <p class="past-time"><span>${activityInformation[0].minutes}</span>MIN<span>${activityInformation[0].seconds}</span>SECONDS</p>
     <p class="past-intention">${activityInformation[0].description}</p>
-    <div class="activity-color-tag green purple red"></div>
+    <div class="activity-color-tag"></div>
   </article>`
-  // assignTagColor();
   timerCard.classList.add('hide');
   completedActivity.classList.remove('hide');
   timerButton.disabled = false;
+  assignTagColor();
 }
 
-// function assignTagColor() {
-//   if(activityInformation[0].category === 'Study') {
-//   activityColorTag.classList.remove('purple');
-//   activityColorTag.classList.remove('red');
-  // } else if(activityInformation[0].category === 'Meditate') {
-  // activityColorTag.classList.add('purple');
-  // } else if(activityInformation[0].category === 'Exercise') {
-  // activityColorTag.classList.add('red');
-//   }
-// }
+function assignTagColor() {
+  var activityColorTag = document.querySelector('.activity-color-tag')
+  if(activityInformation[0].category === 'Study') {
+  activityColorTag.classList.add('green')
+  } else if (activityInformation[0].category === 'Exercise') {
+  activityColorTag.classList.add('red')
+  } else {
+  activityColorTag.classList.add('purple')
+  }
+}
 
 function clearForm() {
     intentionInformation.value = "";
