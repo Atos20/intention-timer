@@ -50,12 +50,10 @@ function startActivity(event) {
 }
 
 function iconAlert() {
-  if(studyButton.classList.contains('green') ||
-    meditateButton.classList.contains('purple') ||
-    exerciseButton.classList.contains('red')) {
-    alertUnselectedActivity.classList.add('hide');
-  } else {
+  if(selectedCategory === undefined) {
     alertUnselectedActivity.classList.remove('hide');
+  } else {
+    alertUnselectedActivity.classList.add('hide');
   }
 }
 
