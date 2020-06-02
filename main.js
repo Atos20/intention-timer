@@ -145,9 +145,9 @@ function logActivity() {
 
 function assignTagColor() {
   var activityColorTag = document.querySelector('.activity-color-tag')
-  if(activityInformation[0].category === 'Study') {
+  if(selectedCategory === 'Study') {
   activityColorTag.classList.add('green')
-  } else if (activityInformation[0].category === 'Exercise') {
+  } else if (selectedCategory === 'Exercise') {
   activityColorTag.classList.add('red')
   } else {
   activityColorTag.classList.add('purple')
