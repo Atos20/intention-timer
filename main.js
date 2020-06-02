@@ -178,18 +178,32 @@ function activityButton(event) {
   }
 }
 
+function unselectStudy() {
+  studyIconActive.classList.add('hide');
+  studyIcon.classList.remove('hide');
+  studyButton.classList.remove('green');
+}
+
+function unselectMeditate() {
+  meditateButton.classList.remove('purple');
+  meditateIcon.classList.remove('hide');
+  meditateIconActive.classList.add('hide');
+}
+
+function unselectExercise() {
+  exerciseIconActive.classList.add('hide');
+  exerciseIcon.classList.remove('hide');
+  exerciseButton.classList.remove('red');
+}
+
 function changeColorOfStudyButton() {
   selectedCategory = 'Study';
   studyButton.classList.toggle('green');
   studyButton.classList.toggle('white');
-  studyIcon.classList.toggle('hide')
-  studyIconActive.classList.toggle('hide')
-  meditateButton.classList.remove('purple');
-  meditateIcon.classList.remove('hide');
-  meditateIconActive.classList.add('hide');
-  exerciseIconActive.classList.add('hide');
-  exerciseIcon.classList.remove('hide');
-  exerciseButton.classList.remove('red');
+  studyIcon.classList.toggle('hide');
+  studyIconActive.classList.toggle('hide');
+  unselectMeditate();
+  unselectExercise();
   timerButton.classList.add('green-circle');
 }
 
@@ -199,12 +213,8 @@ function changeColorOfMeditateButton() {
   meditateButton.classList.toggle('white');
   meditateIcon.classList.toggle('hide');
   meditateIconActive.classList.toggle('hide');
-  studyIconActive.classList.add('hide');
-  studyIcon.classList.remove('hide');
-  studyButton.classList.remove('green');
-  exerciseIconActive.classList.add('hide');
-  exerciseIcon.classList.remove('hide');
-  exerciseButton.classList.remove('red');
+  unselectStudy();
+  unselectExercise();
   timerButton.classList.add('purple-circle');
 }
 
@@ -214,11 +224,7 @@ function changeColorOfExerciseButton() {
   exerciseButton.classList.toggle('white');
   exerciseIcon.classList.toggle('hide');
   exerciseIconActive.classList.toggle('hide');
-  meditateButton.classList.remove('purple');
-  meditateIcon.classList.remove('hide');
-  meditateIconActive.classList.add('hide');
-  studyIconActive.classList.add('hide');
-  studyIcon.classList.remove('hide');
-  studyButton.classList.remove('green');
+  unselectMeditate();
+  unselectStudy();
   timerButton.classList.add('red-circle');
 }
