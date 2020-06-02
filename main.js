@@ -50,6 +50,9 @@ function startActivity(event) {
   allowDisplayTimerCard();
 }
 
+window.onload = retrieveFromStorage();
+window.onload = displayPastActivities();
+
 function iconAlert() {
   if(selectedCategory === undefined) {
     alertUnselectedActivity.classList.remove('hide');
@@ -102,10 +105,10 @@ function displayTimerCard() {
 }
 
 function timerStart() {
-  var intentionTimer = setInterval(countdown, 1000);
+  var intentionTimer = setInterval(timerCountdown, 1000);
   var activity = activityInformation[0];
-  var allSeconds = activity.totalSeconds();
-  function countdown() {
+  var allSeconds = activity.countdown();
+  function timerCountdown() {
     allSeconds--
     minutesText.innerText = Math.floor( (allSeconds/60) % 60 )
     secondsText.innerText = Math.floor( (allSeconds) % 60 );
@@ -128,7 +131,7 @@ function timerComplete() {
   timerButton.innerText = `WELL-DONE`
 }
 
-function logActivity() {
+function displayPastActivities() {
   noActivitiesMessage.classList.add('hide');
   cardContainer.classList.remove('hide');
   cardContainer.innerHTML = '';
@@ -140,9 +143,17 @@ function logActivity() {
     <div class="activity-color-tag ${activityInformation[i].tagColor}"></div>
     </article>`
   }
+}
+
+function logActivity() {
+  displayPastActivities();
   timerCard.classList.add('hide');
   completedActivity.classList.remove('hide');
   timerButton.disabled = false;
+}
+
+function retrieveFromStorage() {
+  activityInformation = JSON.parse(localStorage.getItem('activityInformation'));
 }
 
 function clearForm() {

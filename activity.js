@@ -10,10 +10,10 @@ class Activity {
   }
   countdown() {
 //uses minutes and seconds
+  return parseInt(this.minutes) * 60 + parseInt(this.seconds)
+
   }
-  totalSeconds() {
-    return parseInt(this.minutes) * 60 + parseInt(this.seconds)
-  }
+
   display() {
     userIntention.innerText = this.description;
     minutesText.innerText = this.minutes;
