@@ -93,6 +93,7 @@ function allowDisplayTimerCard() {
 function storeInformation() {
   var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, undefined, undefined,);
   activityInformation.unshift(activityInstance);
+  activityInformation[0].saveToStorage();
 }
 
 function displayTimerCard() {
@@ -142,6 +143,7 @@ function logActivity() {
   // assignTagColor();
   timerCard.classList.add('hide');
   completedActivity.classList.remove('hide');
+  timerButton.disabled = false;
 }
 
 // function assignTagColor() {
@@ -155,9 +157,22 @@ function logActivity() {
 //   }
 // }
 
+function clearForm() {
+    intentionInformation.value = "";
+    minutesNumberOnly.value = "";
+    secondsNumberOnly.value = "";
+    unselectStudy();
+    unselectMeditate();
+    unselectExercise();
+};
+
+
 function returnHome() {
   completedActivity.classList.add('hide');
   activityCard.classList.remove('hide');
+  timerButton.innerText = `START`
+  clearForm();
+
 }
 
 minutesNumberOnly.addEventListener('keypress', function(event) {

@@ -25,7 +25,7 @@ class Activity {
 //sets the completed property
   }
   saveToStorage() {
-//using every property in the class
+    localStorage.setItem('activityInformation', JSON.stringify(activityInformation));
   }
 }
 
