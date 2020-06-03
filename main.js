@@ -13,19 +13,11 @@ var secondsNumberOnly = document.querySelector('.seconds-input');
 var startActivityButton = document.querySelector('.start-activity-button')
 var timerCard = document.querySelector('.timer-card-article');
 var activityCard = document.querySelector('.activity-card-article');
-var userTimerCard = document.querySelector('.timer-card');
 var userIntention = document.querySelector('.user-intention');
 var timerButton = document.querySelector('.timer-button');
-var userInput = document.querySelector('.user-input');
-var alertEmptyText = document.querySelector('.alert-empty-text');
-var alertEmptyMinutes = document.querySelector('.alert-empty-minutes');
-var alertEmptySeconds = document.querySelector('.alert-empty-seconds');
-var alertUnselectedActivity = document.querySelector('.alert-unselected-activity');
 var minutesText = document.querySelector('.minutes-text');
 var secondsText = document.querySelector('.seconds-text');
 var logActivityButton = document.querySelector('.log-activity-button')
-var noActivitiesMessage = document.querySelector('.no-activities-message')
-var cardContainer = document.querySelector('.card-container')
 var activityButtonContainer = document.querySelector('.activity-button-container')
 var completedActivity = document.querySelector('.completed-activity')
 var newActivityButton = document.querySelector('.new-activity-button')
@@ -54,6 +46,7 @@ window.onload = retrieveFromStorage();
 window.onload = displayPastActivities();
 
 function iconAlert() {
+  var alertUnselectedActivity = document.querySelector('.alert-unselected-activity');
   if(selectedCategory === undefined) {
     alertUnselectedActivity.classList.remove('hide');
   } else {
@@ -62,6 +55,7 @@ function iconAlert() {
 }
 
 function addIntentionAlert() {
+  var alertEmptyText = document.querySelector('.alert-empty-text');
   if (intentionInformation.value.length === 0) {
     alertEmptyText.classList.remove('hide');
   } else {
@@ -70,6 +64,7 @@ function addIntentionAlert() {
 }
 
 function addMinuteAlert() {
+  var alertEmptyMinutes = document.querySelector('.alert-empty-minutes');
   if (minutesNumberOnly.value.length === 0) {
     alertEmptyMinutes.classList.remove('hide');
   } else {
@@ -78,6 +73,7 @@ function addMinuteAlert() {
 }
 
 function addSecondAlert() {
+  var alertEmptySeconds = document.querySelector('.alert-empty-seconds');
   if (secondsNumberOnly.value.length === 0) {
     alertEmptySeconds.classList.remove('hide');
   } else {
@@ -132,6 +128,8 @@ function timerComplete() {
 }
 
 function displayPastActivities() {
+  var noActivitiesMessage = document.querySelector('.no-activities-message')
+  var cardContainer = document.querySelector('.card-container')
   noActivitiesMessage.classList.add('hide');
   cardContainer.classList.remove('hide');
   cardContainer.innerHTML = '';
@@ -146,6 +144,7 @@ function displayPastActivities() {
 }
 
 function logActivity() {
+
   displayPastActivities();
   timerCard.classList.add('hide');
   completedActivity.classList.remove('hide');
