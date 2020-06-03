@@ -1,17 +1,16 @@
 class Activity {
-  constructor(category, description, minutes, seconds, tagColor, completed, id) {
+  constructor(category, description, minutes, seconds, tagColor) {
     this.category = category;
     this.description = description;
     this.minutes = minutes;
     this.seconds = seconds;
     this.tagColor = tagColor;
     this.completed = false;
-    this.id = id || Date.now();
+    this.id = Date.now();
   }
-  countdown() {
-//uses minutes and seconds
-  return parseInt(this.minutes) * 60 + parseInt(this.seconds)
 
+  countdown() {
+  return parseInt(this.minutes) * 60 + parseInt(this.seconds);
   }
 
   display() {
@@ -22,20 +21,14 @@ class Activity {
       secondsText.innerText = ('0' + secondsText.innerText);
     }
   }
+
   markComplete() {
     secondsText.innerText = `0`;
-    minutesText.innerText = `0`
-    timerButton.innerText = `WELL-DONE`
-//sets the completed property
+    minutesText.innerText = `0`;
+    timerButton.innerText = `WELL-DONE`;
   }
+
   saveToStorage() {
     localStorage.setItem('activityInformation', JSON.stringify(activityInformation));
   }
-}
-
-
-//if something uses or modifies a class property put it in a class
-//if something processes multiple class objects leave it outside of the class
-//if it modifies something in the class it should be a class method
-//if it does some calculation that requires properties in the class it should be a class method
-//if it is something where you compare one object instance to another object instance (assuming they from the same class)
+};
