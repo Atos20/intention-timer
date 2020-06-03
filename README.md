@@ -38,18 +38,15 @@ The Intention Timer aims to set goals for healthy and productive activities incl
 
 
 
-### Future Goals
+## Future Goals
 
   * Expand/Collapse Reflection
   * Favorite activity & Re-Do activity.
   * Pausing the Timer
 
 
-### In Closing
-
-
 ## Using the App
-* go to [Intention-Timer](https://github.com/Atos20/intention-timer)
+* go to [Intention-Timer](https://atos20.github.io/intention-timer/)
 
   * Select the the activity button from the three options provided
   * Fill out the form with a description about the activity you want to accomplish
