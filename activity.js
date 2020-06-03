@@ -9,9 +9,7 @@ class Activity {
     this.id = id || Date.now();
   }
   countdown() {
-//uses minutes and seconds
-  return parseInt(this.minutes) * 60 + parseInt(this.seconds)
-
+  return parseInt(this.minutes) * 60 + parseInt(this.seconds);
   }
 
   display() {
@@ -26,7 +24,6 @@ class Activity {
     secondsText.innerText = `0`;
     minutesText.innerText = `0`
     timerButton.innerText = `WELL-DONE`
-//sets the completed property
   }
   saveToStorage() {
     localStorage.setItem('activityInformation', JSON.stringify(activityInformation));
