@@ -28,9 +28,11 @@ timerButton.addEventListener('click', timerStart);
 logActivityButton.addEventListener('click', logActivity);
 newActivityButton.addEventListener('click', returnHome);
 
-var activityInformation;
+var activityInformation = [];
 var selectedCategory;
 var tagColor;
+
+
 
 function startActivity(event) {
   event.preventDefault();
@@ -83,7 +85,7 @@ function addSecondAlert() {
 }
 
 function allowDisplayTimerCard() {
-  if ((studyButton.classList.contains('green') || meditateButton.classList.contains('purple') || exerciseButton.classList.contains('red')) && (intentionInformation.value.length > 0) && (minutesNumberOnly.value.length > 0) && (secondsNumberOnly.value.length > 0)) {
+  if ((selectedCategory !== undefined) && (intentionInformation.value.length > 0) && (minutesNumberOnly.value.length > 0) && (secondsNumberOnly.value.length > 0)) {
     displayTimerCard()
   }
 }
@@ -123,9 +125,8 @@ function timerStart() {
 }
 
 function timerComplete() {
-  secondsText.innerText = `0`;
-  minutesText.innerText = `0`
-  timerButton.innerText = `WELL-DONE`
+  var activity = activityInformation[0];
+  activity.markComplete();
   logActivityButton.disabled = false;
 }
 
@@ -138,7 +139,7 @@ function displayPastActivities() {
   for (var i = 0; i < activityInformation.length; i++) {
     cardContainer.innerHTML += `<article class="past-activity-card">
     <p class="past-activity">${activityInformation[i].category}</p>
-    <p class="past-time"><span>${activityInformation[i].minutes}</span>MIN<span>${activityInformation[i].seconds}</span>SECONDS</p>
+    <p class="past-time"><span>${activityInformation[i].minutes} </span>MIN<span> ${activityInformation[i].seconds} </span>SECONDS</p>
     <p class="past-intention">${activityInformation[i].description}</p>
     <div class="activity-color-tag ${activityInformation[i].tagColor}"></div>
     </article>`
@@ -171,7 +172,6 @@ function returnHome() {
   activityCard.classList.remove('hide');
   timerButton.innerText = `START`
   clearForm();
-
 }
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
