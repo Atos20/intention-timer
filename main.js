@@ -43,7 +43,7 @@ function startActivity(event) {
 }
 
 window.onload = retrieveFromStorage();
-window.onload = displayPastActivities();
+// window.onload = displayPastActivities();
 
 function iconAlert() {
   var alertUnselectedActivity = document.querySelector('.alert-unselected-activity');
@@ -152,7 +152,7 @@ function logActivity() {
 }
 
 function retrieveFromStorage() {
-  activityInformation = JSON.parse(localStorage.getItem('activityInformation'));
+  activityInformation = JSON.parse(localStorage.getItem('activityInformation')) || [];
 }
 
 function clearForm() {
