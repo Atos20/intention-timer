@@ -336,6 +336,8 @@ color: #FFF;
 }
 
 .log-activity-button {
+  color: black;
+  background-color: white;
   cursor: pointer;
   float: none;
   margin: 40px auto 0px auto;
