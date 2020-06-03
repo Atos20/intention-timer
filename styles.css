@@ -165,8 +165,18 @@ form {
   display: flex;
   width: 200px;
   color: #EFB7EC;
+}
 
+.alert-text-2{
+grid-area: 7 / 1 / 8 / 2;
+padding-left: 20px;
+font-size: 13px;
+}
 
+.alert-text-3{
+grid-area: 7 / 2 / 8 / 3;
+padding-left: 20px;
+font-size: 13px;
 }
 
 .alert-empty-minutes{
