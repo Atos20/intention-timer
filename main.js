@@ -13,32 +13,26 @@ var secondsNumberOnly = document.querySelector('.seconds-input');
 var startActivityButton = document.querySelector('.start-activity-button')
 var timerCard = document.querySelector('.timer-card-article');
 var activityCard = document.querySelector('.activity-card-article');
-var userTimerCard = document.querySelector('.timer-card');
 var userIntention = document.querySelector('.user-intention');
 var timerButton = document.querySelector('.timer-button');
-var userInput = document.querySelector('.user-input');
-var alertEmptyText = document.querySelector('.alert-empty-text');
-var alertEmptyMinutes = document.querySelector('.alert-empty-minutes');
-var alertEmptySeconds = document.querySelector('.alert-empty-seconds');
-var alertUnselectedActivity = document.querySelector('.alert-unselected-activity');
 var minutesText = document.querySelector('.minutes-text');
 var secondsText = document.querySelector('.seconds-text');
-var logActivityButton = document.querySelector('.log-activity-button')
-var noActivitiesMessage = document.querySelector('.no-activities-message')
-var cardContainer = document.querySelector('.card-container')
-var activityButtonContainer = document.querySelector('.activity-button-container')
-var completedActivity = document.querySelector('.completed-activity')
-var newActivityButton = document.querySelector('.new-activity-button')
+var logActivityButton = document.querySelector('.log-activity-button');
+var activityButtonContainer = document.querySelector('.activity-button-container');
+var completedActivity = document.querySelector('.completed-activity');
+var newActivityButton = document.querySelector('.new-activity-button');
 
 activityButtonContainer.addEventListener('click', activityButton);
 startActivityButton.addEventListener('click', startActivity);
 timerButton.addEventListener('click', timerStart);
 logActivityButton.addEventListener('click', logActivity);
-newActivityButton.addEventListener('click', returnHome)
+newActivityButton.addEventListener('click', returnHome);
 
 var activityInformation = [];
-var selectedCategory
-var tagColor
+var selectedCategory;
+var tagColor;
+
+
 
 function startActivity(event) {
   event.preventDefault();
@@ -48,12 +42,14 @@ function startActivity(event) {
   addSecondAlert();
   iconAlert();
   allowDisplayTimerCard();
+  logActivityButton.disabled = true;
 }
 
 window.onload = retrieveFromStorage();
 window.onload = displayPastActivities();
 
 function iconAlert() {
+  var alertUnselectedActivity = document.querySelector('.alert-unselected-activity');
   if(selectedCategory === undefined) {
     alertUnselectedActivity.classList.remove('hide');
   } else {
@@ -62,6 +58,7 @@ function iconAlert() {
 }
 
 function addIntentionAlert() {
+  var alertEmptyText = document.querySelector('.alert-empty-text');
   if (intentionInformation.value.length === 0) {
     alertEmptyText.classList.remove('hide');
   } else {
@@ -70,6 +67,7 @@ function addIntentionAlert() {
 }
 
 function addMinuteAlert() {
+  var alertEmptyMinutes = document.querySelector('.alert-empty-minutes');
   if (minutesNumberOnly.value.length === 0) {
     alertEmptyMinutes.classList.remove('hide');
   } else {
@@ -78,6 +76,7 @@ function addMinuteAlert() {
 }
 
 function addSecondAlert() {
+  var alertEmptySeconds = document.querySelector('.alert-empty-seconds');
   if (secondsNumberOnly.value.length === 0) {
     alertEmptySeconds.classList.remove('hide');
   } else {
@@ -86,7 +85,7 @@ function addSecondAlert() {
 }
 
 function allowDisplayTimerCard() {
-  if ((studyButton.classList.contains('green') || meditateButton.classList.contains('purple') || exerciseButton.classList.contains('red')) && (intentionInformation.value.length > 0) && (minutesNumberOnly.value.length > 0) && (secondsNumberOnly.value.length > 0)) {
+  if ((selectedCategory !== undefined) && (intentionInformation.value.length > 0) && (minutesNumberOnly.value.length > 0) && (secondsNumberOnly.value.length > 0)) {
     displayTimerCard()
   }
 }
@@ -126,19 +125,21 @@ function timerStart() {
 }
 
 function timerComplete() {
-  secondsText.innerText = `0`;
-  minutesText.innerText = `0`
-  timerButton.innerText = `WELL-DONE`
+  var activity = activityInformation[0];
+  activity.markComplete();
+  logActivityButton.disabled = false;
 }
 
 function displayPastActivities() {
+  var noActivitiesMessage = document.querySelector('.no-activities-message')
+  var cardContainer = document.querySelector('.card-container')
   noActivitiesMessage.classList.add('hide');
   cardContainer.classList.remove('hide');
   cardContainer.innerHTML = '';
   for (var i = 0; i < activityInformation.length; i++) {
     cardContainer.innerHTML += `<article class="past-activity-card">
     <p class="past-activity">${activityInformation[i].category}</p>
-    <p class="past-time"><span>${activityInformation[i].minutes}</span>MIN<span>${activityInformation[i].seconds}</span>SECONDS</p>
+    <p class="past-time"><span>${activityInformation[i].minutes} </span>MIN<span> ${activityInformation[i].seconds} </span>SECONDS</p>
     <p class="past-intention">${activityInformation[i].description}</p>
     <div class="activity-color-tag ${activityInformation[i].tagColor}"></div>
     </article>`
@@ -146,6 +147,7 @@ function displayPastActivities() {
 }
 
 function logActivity() {
+
   displayPastActivities();
   timerCard.classList.add('hide');
   completedActivity.classList.remove('hide');
@@ -153,7 +155,7 @@ function logActivity() {
 }
 
 function retrieveFromStorage() {
-  activityInformation = JSON.parse(localStorage.getItem('activityInformation'));
+  activityInformation = JSON.parse(localStorage.getItem('activityInformation')) || [];
 }
 
 function clearForm() {
@@ -170,7 +172,6 @@ function returnHome() {
   activityCard.classList.remove('hide');
   timerButton.innerText = `START`
   clearForm();
-
 }
 
 minutesNumberOnly.addEventListener('keypress', function(event) {
@@ -202,18 +203,21 @@ function unselectStudy() {
   studyIconActive.classList.add('hide');
   studyIcon.classList.remove('hide');
   studyButton.classList.remove('green');
+  timerButton.classList.remove('green-circle');
 }
 
 function unselectMeditate() {
   meditateButton.classList.remove('purple');
   meditateIcon.classList.remove('hide');
   meditateIconActive.classList.add('hide');
+  timerButton.classList.remove('purple-circle');
 }
 
 function unselectExercise() {
   exerciseIconActive.classList.add('hide');
   exerciseIcon.classList.remove('hide');
   exerciseButton.classList.remove('red');
+  timerButton.classList.remove('red-circle');
 }
 
 function selectStudyButton() {
@@ -223,9 +227,10 @@ function selectStudyButton() {
   studyButton.classList.toggle('white');
   studyIcon.classList.toggle('hide');
   studyIconActive.classList.toggle('hide');
+  timerButton.classList.add('green-circle');
   unselectMeditate();
   unselectExercise();
-  timerButton.classList.add('green-circle');
+
 }
 
 function selectMeditateButton() {
@@ -235,9 +240,10 @@ function selectMeditateButton() {
   meditateButton.classList.toggle('white');
   meditateIcon.classList.toggle('hide');
   meditateIconActive.classList.toggle('hide');
+  timerButton.classList.add('purple-circle');
   unselectStudy();
   unselectExercise();
-  timerButton.classList.add('purple-circle');
+
 }
 
 function selectExerciseButton() {
@@ -247,7 +253,8 @@ function selectExerciseButton() {
   exerciseButton.classList.toggle('white');
   exerciseIcon.classList.toggle('hide');
   exerciseIconActive.classList.toggle('hide');
+  timerButton.classList.add('red-circle');
   unselectMeditate();
   unselectStudy();
-  timerButton.classList.add('red-circle');
+
 }
