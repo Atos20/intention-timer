@@ -412,8 +412,6 @@ color: #FFF;
     height: 40px;
     margin: .5em;
     background-color: transparent;
-    border: solid 1px #FFF;
-    color: #FFF;
     font-size: 16px;
     display: flex;
     flex-direction: row;
@@ -456,8 +454,6 @@ color: #FFF;
 
   .timer-button {
     border-radius: 50%;
-    border: 2px solid #FFF;
-    color: #FFF;
     cursor: pointer;
     float: none;
     height: 150px;
