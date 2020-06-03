@@ -91,9 +91,15 @@ function allowDisplayTimerCard() {
 }
 
 function storeInformation() {
-  var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, tagColor, undefined, undefined,);
-  activityInformation.unshift(activityInstance);
-  activityInformation[0].saveToStorage();
+
+  if ((selectedCategory !== undefined) && (intentionInformation.value.length > 0) && (minutesNumberOnly.value.length > 0) && (secondsNumberOnly.value.length > 0)) {
+    var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, tagColor, undefined, undefined,);
+    activityInformation.unshift(activityInstance);
+    activityInformation[0].saveToStorage();
+  }
+  // var activityInstance = new Activity (selectedCategory, intentionInformation.value, minutesNumberOnly.value, secondsNumberOnly.value, tagColor, undefined, undefined,);
+  // activityInformation.unshift(activityInstance);
+  // activityInformation[0].saveToStorage();
 }
 
 function displayTimerCard() {
@@ -140,7 +146,7 @@ function displayPastActivities() {
     cardContainer.innerHTML += `<article class="past-activity-card">
     <p class="past-activity">${activityInformation[i].category}</p>
     <p class="past-time"><span>${activityInformation[i].minutes} </span>MIN<span> ${activityInformation[i].seconds} </span>SECONDS</p>
-    <p class="past-intention">${activityInformation[i].description}</p>
+    <p class="past-intention ">${activityInformation[i].description}</p>
     <div class="activity-color-tag ${activityInformation[i].tagColor}"></div>
     </article>`
   }
