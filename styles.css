@@ -138,8 +138,11 @@ form {
 
 
 .alert-icon {
-  width: 15px;
-  height: 15px;
+  width: 11px;
+  height: 11px;
+  margin: 2px 5px 5px 3px;
+  displa
+
 }
 
 /* .alert{
@@ -152,52 +155,58 @@ form {
   justify-self: start;
   display:block;
 } */
+.alert-unselected-activity{
+ color: #EFB7EC;
+}
 
 .alert-empty-text {
-  grid-area: 3 / 1 / 4 / 3;
-  font-size: 10px;
+  grid-area: 4 / 1 / 5 / 3;
+  font-size: 13px;
   display: flex;
   width: 200px;
+  color: #EFB7EC;
+
+
 }
 
 .alert-empty-minutes{
- grid-area: 6 / 1 / 7 / 2;
+ grid-area: 7 / 1 / 8 / 2;
  align-self: start;
  justify-self: start;
 }
 
 .alert-empty-seconds{
- grid-area: 6 / 2 / 7 / 3;
+ grid-area: 7 / 2 / 8 / 3;
  align-self: start;
  justify-self: start;
 }
 
 .intention-question {
-  grid-area: 1 / 1 / 2 / 3;
-}
-
-.intention-answer{
   grid-area: 2 / 1 / 3 / 3;
 }
 
+.intention-answer{
+  grid-area: 3 / 1 / 4 / 3;
+}
+
 .minutes {
-  grid-area: 4 / 1 / 5 / 2;
-}
-
-.seconds {
-  grid-area: 4 / 2 / 5 / 3;
-}
-
-.minutes-input{
   grid-area: 5 / 1 / 6 / 2;
 }
 
-.seconds-input {
+.seconds {
   grid-area: 5 / 2 / 6 / 3;
 }
 
+.minutes-input{
+  grid-area: 6 / 1 / 7 / 2;
+}
+
+.seconds-input {
+  grid-area: 6 / 2 / 7 / 3;
+}
+
 .start-activity-button {
-  grid-area: 7/ 2 / 8 / 3;
+  grid-area: 8 / 2 / 9 / 3;
   width: 15em;
   height: 2.4em;
   justify-self: end;
