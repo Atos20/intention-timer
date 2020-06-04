@@ -34,32 +34,29 @@ The Intention Timer aims to set goals for healthy and productive activities incl
   * CSS breakpoints
   * Timer functionality
   * Event listeners
-  * Profesionalism
+  * Professionalism
 
 
 
 ## Future Goals
 
   * Expand/Collapse Reflection
-  * Favorite activity & Re-Do activity.
+  * Favorite activity & Re-Do activity
   * Pausing the Timer
 
 
 ## Using the App
-* go to [Intention-Timer](https://atos20.github.io/intention-timer/)
+* Go to [Intention-Timer](https://atos20.github.io/intention-timer/)
 
   * Select the the activity button from the three options provided
-  * Fill out the form with a description about the activity you want to accomplish
-  * Input the amount of time you would like the activity to last in minutes and seconds.
-  * Click on the `start activity button`.
-  * Click on the `start` button and *enjoy* your activity.
-  * Once the activity is completed the option to `save` or `log` the activity will be ablable.
-  * Look at the history of you past activities.
+  * Fill out the form with a description of the activity you want to accomplish
+  * Input the amount of time you would like the activity to last in minutes and seconds
+  * Click on the `start activity button`
+  * Click on the `start` button and *enjoy* your activity
+  * Once the activity is completed the option to `save` or `log` the activity will be available
+  * You now have the ability to view your past activities on the right side of the page
 
-## Resources
 
-[Turing School Examples](https://www.github.com/turingschool-examples/romcom)    
-[MDN Web Docs](https://developer.mozilla.org/en-US/)
 
 ## In Action
 
@@ -86,7 +83,28 @@ The Intention Timer aims to set goals for healthy and productive activities incl
 
 <img src="http://g.recordit.co/2vfc8fCtvc.gif" alt="In mobile view, the user creates a new activity and logs the activity." height=auto width=25%/>
 
+
+## Comps Provided
+
+**Home View With Alert Functionality**
+
+![Home View](https://frontend.turing.io/projects/module-1/assets/intention-timer/error-message-desktop.png)
+
+**Timer View**
+
+![Timer View](https://frontend.turing.io/projects/module-1/assets/intention-timer/timer-start-desktop.png)
+
+**Log Activity View**
+
+![Log Activity Veiw](https://frontend.turing.io/projects/module-1/assets/intention-timer/complete-activity-desktop.png)
+
+**Mobile View**
+
+![Mobile View](https://frontend.turing.io/projects/module-1/assets/intention-timer/mobile-1.png)
+
+
 ### If you want to contribute
+
 
 1. `git clone` the repository to your computer
 1. cd into the repository
