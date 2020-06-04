@@ -202,8 +202,8 @@ form {
 
 .input {
   background-color: transparent;
-  border-bottom: 2px solid #CBC9CF;
   border-style: none;
+  border-bottom: 2px solid #CBC9CF;
   color: #CBC9CF;
   font-size: 1.2em;
   margin-bottom: .4em;
