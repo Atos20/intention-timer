@@ -61,19 +61,30 @@ The Intention Timer aims to set goals for healthy and productive activities incl
 [Turing School Examples](https://www.github.com/turingschool-examples/romcom)    
 [MDN Web Docs](https://developer.mozilla.org/en-US/)
 
-## Acknowledgments
-###
-A big thanks to Scott Ertemer, Carlos Flores, and Garrett Iannuzzi for being rubber ducks to us as we worked through the project, and Leta Keane and Casey Dallavalle for teaching us so much magic codes and to Leigh Larson for offering to do a code review with us.
-## Webite Screengrabs
+## In Action
 
-Form:  
-![Generating random images:](https://github.com/Atos20/romcom/blob/master/assets/readme/random-covers.gif?raw=true)
+  * if the user does not select an activity or leaves an input field blank, an alert message appears
+  * once all require information is provided, the user clicks the 'Start Activity' button
+  * then a timer with the users information appears
 
-Saving and deleting saved images:  
-![Saving and deleting saved images:]()
+<img src="http://g.recordit.co/45spWvY0Pv.gif" alt="The user fills out the New Activity form and a timer appears." height=auto width=75%/>
 
-Creating and saving user generated images:  
-![Creating and saving user generated images]()
+  * the user clicks 'Start' and the countdown begins
+  * once the countdown is complete, the message 'Well Done' appears
+  * then the user clicks 'Log Activity' and a new activity card appears below 'Past Activities'
+
+<img src="http://g.recordit.co/jym3kFLd53.gif" alt="The user clicks start, the timer counts down, and then they log the activity." height=auto width=75%/>
+
+  * the user clicks 'Create A New Activity' and is brought back to the activity form
+  * the user inputs new information and initiates the countdown
+  * when the user logs the new activity, it appears with the other past activity
+
+<img src="http://g.recordit.co/NVn0kq2QiZ.gif" alt="The user creates and logs a new activity." height=auto width=75%/>
+
+  * in mobile view, the user has all of the same functionality
+  * the past activities appear at the bottom instead of to the right
+
+<img src="http://g.recordit.co/2vfc8fCtvc.gif" alt="In mobile view, the user creates a new activity and logs the activity." height=auto width=25%/>
 
 ### If you want to contribute
 
